@@ -10,7 +10,7 @@ export const Footer = () => {
   const year = useMemo(() => new Date().getFullYear(), []);
   return (
     <>
-      <Partners />
+
       <footer className="bg-blue dark:bg-primary text-white">
         <div className="relative bottom-1 z-10">
           <div className="flex h-[6px] w-[80%] mx-auto z-10">
