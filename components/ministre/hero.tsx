@@ -1,4 +1,4 @@
-import { Container, Section } from "@/components/craft"
+import { Container } from "@/components/craft"
 import Image from "next/image"
 import MINISTRE from '@/public/ministre-banner.jpg'
 

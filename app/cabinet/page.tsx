@@ -1,10 +1,4 @@
-import { Plus } from "lucide-react";
 
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import { Container, Section } from "@/components/craft";
 
 import Image from "next/image";
