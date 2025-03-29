@@ -37,28 +37,8 @@ export const MENU = [
     ],
   },
   {
-    name: "Coopération",
-    href: "/cooperation",
-    submenu: [
-      {
-        name: "Bilaterale",
-        href: "/cooperation/bilaterale",
-      },
-      {
-        name: "Multilaterale",
-        href: "/cooperation/multilaterale",
-      },
-      {
-        name: "Les projets",
-        href: "/#",
-      },
-      {
-        name: "Les investissement",
-        href: "/#",
-      },
-      
-    ],
-
+    name: "Programme",
+    href: "/programme",
   },
 
   {
@@ -86,7 +66,6 @@ export const MENU = [
         href: "/delegation-generale",
       },
     ],
-
   },
   {
     name: "Actualités",
@@ -96,10 +75,6 @@ export const MENU = [
     name: "Médiathèque",
     href: "/mediatheque",
   },
-  // {
-  //   name: "A découvrir",
-  //   href: "/decouvrir",
-  // },
 ];
 
 export const USEFULS_LINKS = [
