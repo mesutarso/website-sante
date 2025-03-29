@@ -5,7 +5,7 @@ import Sliders from "./sliders";
 
 function Hero() {
     return (
-        <div className={'relative min-h-[500px] md:min-h-[700px] bg-blue'}>
+        <div className={'relative min-h-[500px] md:min-h-[600px] bg-blue'}>
             <Section>
                 <Container className="flex flex-col items-start justify-start min-h-[400px] md:min-h-[600px]">
                     <Sliders />
