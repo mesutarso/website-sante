@@ -50,8 +50,8 @@ export const MENU = [
     href: "/actualites",
   },
   {
-    name: "Médiathèque",
-    href: "/mediatheque",
+    name: "Contact",
+    href: "/contact",
   },
 ];
 
