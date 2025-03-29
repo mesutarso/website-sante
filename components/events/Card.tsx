@@ -102,7 +102,7 @@ const EventCard: React.FC<any> = ({
   return (
     <>
       <motion.div
-        className="bg-white rounded-lg p-6 flex items-center space-x-4"
+        className="bg-white rounded-lg p-6 flex items-center space-x-4 h-full"
         initial="initial"
         animate="animate"
         variants={fadeInUp}
@@ -111,20 +111,24 @@ const EventCard: React.FC<any> = ({
           className={`${bgColor} w-12 h-12 rounded-full flex-shrink-0`}
           variants={fadeIn}
         ></motion.div>
-        <motion.div
-          className="flex-grow w-[50%]"
-          variants={fadeInUp}
-        >
-          <h2 className="text-lg font-bold text-[#1a2f4b] leading-tight">
-            {title}
-          </h2>
-        </motion.div>
-        <motion.p
-          className="text-[#1a2f4b] underline"
-          variants={fadeInUp}
-        >
-          {location}
-        </motion.p>
+        <div className="space-y-4">
+          <motion.div
+            className="flex-grow w-[50%]"
+            variants={fadeInUp}
+          >
+            <h2 className="text-lg font-bold text-[#1a2f4b] leading-tight">
+              {title}
+            </h2>
+          </motion.div>
+          <motion.p
+            className="text-[#1a2f4b] underline"
+            variants={fadeInUp}
+          >
+            {location}
+          </motion.p>
+
+        </div>
+
         <motion.div
           className="flex flex-col items-end space-y-2"
           variants={fadeInUp}

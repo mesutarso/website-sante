@@ -52,6 +52,19 @@ export default function ContactContent() {
                             <div className="flex items-start space-x-4">
                                 <div className="flex-shrink-0">
                                     <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
+                                        <Phone className="w-5 h-5 text-red-500" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className="font-semibold text-[#2D3748]">Numéro Vert</h3>
+                                    <p className="text-gray-600">151</p>
+                                    <p className="text-sm text-gray-500">Pour toutes plaintes liées à la santé</p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start space-x-4">
+                                <div className="flex-shrink-0">
+                                    <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center">
                                         <Mail className="w-5 h-5 text-red-500" />
                                     </div>
                                 </div>
