@@ -2,6 +2,7 @@
 import {
   GET_ARTICLE_BY_SLUG,
   GET_LASTEST_ARTICLES,
+  GET_ALL_ARTICLES,
 } from "../init/queries/article";
 import { fetchGraphql } from "../init";
 import { format } from "date-fns";
@@ -44,4 +45,18 @@ export async function getArticleBySlug(slug: string) {
         })
         .filter((item: any) => item.id !== post.id) || [],
   };
+}
+
+export async function getAllArticles() {
+  const { posts } = await fetchGraphql(GET_ALL_ARTICLES);
+  return posts.edges.map((edge: any) => {
+    return {
+      id: edge.node.id,
+      title: edge.node.title,
+      excerpt: edge.node.excerpt,
+      date: format(new Date(edge.node.date), "dd MMMM yyyy", { locale: fr }),
+      image: edge.node.featuredImage.node.sourceUrl,
+      link: edge.node.slug,
+    };
+  });
 }
