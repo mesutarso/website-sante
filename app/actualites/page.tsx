@@ -12,7 +12,7 @@ import { Section, Container } from "@/components/craft";
 import CardArticle from "@/components/articles/Card";
 import Link from "next/link";
 
-import { articles } from "@/components/home/hero/data";
+import { articles } from "@/lib/data";
 
 interface ArticleProps {
   image: string;

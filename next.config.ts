@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "blanchedalmond-narwhal-171097.hostingersite.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

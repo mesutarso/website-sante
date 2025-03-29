@@ -1,6 +1,6 @@
 "use client"
 
-import { articles } from "../data";
+import { articles } from "@/lib/data";
 import Item from "./item";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
