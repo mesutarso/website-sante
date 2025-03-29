@@ -4,7 +4,6 @@ import { Container, Section } from "@/components/craft";
 import { Link } from "next-view-transitions";
 import Logo from "@/components/shared/logo";
 import { USEFULS_LINKS } from "@/menu.config";
-import { Partners } from "./partners";
 
 export const Footer = () => {
   const year = useMemo(() => new Date().getFullYear(), []);

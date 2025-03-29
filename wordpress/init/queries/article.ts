@@ -71,3 +71,22 @@ query getPostBySlug {
   }
 }
 `;
+
+export const GET_ALL_ARTICLES = `query getAllArticles {
+  posts(first: 100) {
+    edges {
+      node {
+        id
+        slug
+        date
+        title(format: RENDERED)
+        excerpt
+        featuredImage{
+          node{
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+}`;
