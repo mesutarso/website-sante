@@ -1,4 +1,4 @@
-import { Container, Section } from "lucide-react"
+import { Container, Section } from "@/components/craft"
 
 function Mediatheque() {
     return (
