@@ -1,9 +1,13 @@
 "use client"
-import { motion } from "motion/react"
+import { motion, useInView } from "motion/react"
 import { Volume2, Telescope, Building2 } from "lucide-react"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { useRef } from "react"
 
 export default function Role() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
+
   const cards = [
     {
       id: 1,
@@ -29,26 +33,26 @@ export default function Role() {
   ]
 
   return (
-    <div className="min-h-screen bg-blue py-12 px-4 sm:px-6 lg:px-8">
+    <div ref={ref} className="min-h-screen bg-blue py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-7xl mx-auto"
       >
         <div className="text-center mb-12 mt-20">
           <motion.h2
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
             className="text-sm font-medium text-white tracking-wide uppercase"
           >
             Le rôle du ministère
           </motion.h2>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
             className="mt-2 text-4xl font-extrabold text-white sm:text-5xl"
           >
             Le rôle du ministère
@@ -57,8 +61,8 @@ export default function Role() {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           className="prose prose-lg text-white mx-auto mb-16 text-center max-w-3xl"
         >
           <p className="text-sm">
@@ -74,10 +78,11 @@ export default function Role() {
             <motion.div
               key={card.id}
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{
                 delay: 0.2 + index * 0.1,
-                duration: 0.5,
+                duration: 0.8,
+                ease: "easeOut",
                 type: "spring",
                 stiffness: 100,
               }}
@@ -92,16 +97,16 @@ export default function Role() {
                 <CardHeader className="text-center pb-0 pt-8">
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+                    animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+                    transition={{ delay: 0.4 + index * 0.1, duration: 0.8, ease: "easeOut" }}
                     className="flex justify-center mb-4 bg-red-50 p-4 rounded-full w-20 h-20 mx-auto"
                   >
                     {card.icon}
                   </motion.div>
                   <motion.h3
                     initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+                    animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1, duration: 0.8, ease: "easeOut" }}
                     className="text-xl font-bold text-blue mt-4"
                   >
                     {card.title}
@@ -110,8 +115,8 @@ export default function Role() {
                 <CardContent>
                   <motion.p
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
+                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: 0.6 + index * 0.1, duration: 0.8, ease: "easeOut" }}
                     className="text-gray-600 text-center"
                   >
                     {card.content}
@@ -128,7 +133,7 @@ export default function Role() {
               key={dot}
               className="h-2.5 w-2.5 rounded-full bg-blue-800"
               initial={{ opacity: 0.3 }}
-              animate={{ opacity: dot === 2 ? 1 : 0.3 }}
+              animate={isInView ? { opacity: dot === 2 ? 1 : 0.3 } : { opacity: 0.3 }}
               whileHover={{ scale: 1.2, opacity: 1 }}
               transition={{ duration: 0.2 }}
             />
