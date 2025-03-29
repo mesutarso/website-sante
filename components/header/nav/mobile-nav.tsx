@@ -51,8 +51,8 @@ const MenuItem = ({ item, index, pathname, onClose }: MenuItemProps) => {
                                 {item.submenu.map((subItem: any, subIndex: number) => {
                                     const isSubItemActive = pathname === subItem.href;
                                     return (
-                                        <li key={subIndex} onClick={onClose}>
-                                            <Link href={subItem.href} className="underline-none" >
+                                        <li key={subIndex}>
+                                            <Link href={subItem.href} className="underline-none" onClick={onClose} >
                                                 <p className={cn(
                                                     navigationMenuTriggerStyle(),
                                                     isSubItemActive && "text-primary font-medium"
@@ -73,7 +73,7 @@ const MenuItem = ({ item, index, pathname, onClose }: MenuItemProps) => {
 
     return (
         <NavigationMenuItem key={index}>
-            <Link href={item.href} >
+            <Link href={item.href} onClick={onClose}>
                 <span className={cn(
                     navigationMenuTriggerStyle(),
                     isActive(item) && "bg-blue text-white"
@@ -115,7 +115,7 @@ export function MobileNav() {
                     variant="ghost"
                     className="px-0 border w-10 focus:outline-none text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
                 >
-                    <Menu />
+                    <Menu className="text-2xl" />
                     <span className="sr-only">Toggle Menu</span>
                 </Button>
             </SheetTrigger>

@@ -1,7 +1,7 @@
 import { Container, Section } from "@/components/craft";
 import CardArticle from "./Card";
 import { ArrowRight } from "lucide-react";
-import { articles } from "@/components/home/hero/data";
+import { articles } from "@/lib/data";
 function ArticleSection() {
   return (
     <div className={"relative bg-blue"}>

@@ -40,10 +40,10 @@ export const Footer = () => {
                     { name, href }: { name: string; href: string },
                     index: number
                   ) => (
-                    <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200">
+                    <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200" key={index}>
                       <Link
                         className="hover:underline underline-offset-4 capitalize"
-                        key={href}
+
                         href={href}
                       >
                         {name}
@@ -111,7 +111,7 @@ export const Footer = () => {
           </Container>
           <Container className="border-t not-prose flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
             <p className="md:text-center w-full">
-            Tous droits réservés © Ministère de la Santé Publique, Hygiène et Prévention | {year}
+              Tous droits réservés © Ministère de la Santé Publique, Hygiène et Prévention | {year}
             </p>
           </Container>
         </Section>

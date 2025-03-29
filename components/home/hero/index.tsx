@@ -1,15 +1,14 @@
-import { Container, Section } from "@/components/craft";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import Sliders from "./sliders";
+import { Section } from "@/components/craft";
+
+import HeroCarousel from "./carousel";
+import { articles } from "@/lib/data";
+
 
 function Hero() {
     return (
-        <div className={'relative min-h-[500px] md:min-h-[600px] bg-blue flex flex-col items-center justify-center '}>
-            <Section>
-                <Container className="flex flex-col items-start justify-start min-h-[400px] md:min-h-[600px]">
-                    <Sliders />
-                </Container>
+        <div className={'relative bg-blue  '}>
+            <Section className="w-full">
+                <HeroCarousel slides={articles} />
             </Section>
 
             <div className={
