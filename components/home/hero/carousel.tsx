@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react"
 import { Container } from "@/components/craft"
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { slidersQuery } from "@/wordpress/requests/sliders"
+import RemoteImage from "@/components/images/remote"
 
 
 export default function HeroCarousel() {
@@ -64,9 +65,8 @@ export default function HeroCarousel() {
                                             </div>
                                         </div>
                                         <div className="relative min-h-[300px] md:min-h-[400px] bg-transparent w-full md:w-1/2 rounded-2xl">
-                                            <Image
+                                            <RemoteImage
                                                 src={slide.image || "/placeholder.svg"}
-                                                fill
                                                 alt={`Slide ${index + 1}`}
                                                 className="object-cover rounded-2xl"
                                             />
