@@ -15,3 +15,59 @@ export const GET_SLIDERS = `query getSliders {
     }
   }
 }`;
+
+export const GET_LASTEST_ARTICLES = `query getLastPosts {
+  posts(first: 4) {
+    edges {
+      node {
+        id
+        slug
+        date
+        title(format: RENDERED)
+        featuredImage{
+          node{
+            sourceUrl
+          }
+        }
+      }
+    }
+  }
+}`;
+
+export const GET_ARTICLE_BY_SLUG = `
+query getPostBySlug {
+  post(id: "", idType: SLUG) {
+    title
+    excerpt
+    date
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+    categories(first: 1){
+      edges{
+        node{
+          name
+          posts(first:5){
+            edges{
+              node{
+                id
+                title
+                date
+                slug
+                featuredImage{
+                  node{
+                    sourceUrl
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    content
+  }
+}
+`;
