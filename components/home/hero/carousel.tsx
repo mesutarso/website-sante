@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react"
 import { Container } from "@/components/craft"
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { slidersQuery } from "@/wordpress/requests/sliders"
+import { motion } from "motion/react"
 
 
 
@@ -49,22 +50,48 @@ export default function HeroCarousel() {
                         {data.map((slide: any, index: number) => (
                             <CarouselItem key={index} className=" ">
                                 <div className="p-1">
-                                    <div className="flex flex-col-reverse md:flex-row items-center justify-center  overflow-hidden  text-white">
-                                        <div className="flex flex-col justify-center p-8 space-y-4 w-full md:w-1/2">
-                                            <h3 className="text-3xl md:text-4xl md:line-clamp-3 line-clamp-4   font-bold">{slide.title}</h3>
-                                            <p className="line-clamp-4" dangerouslySetInnerHTML={
-                                                { __html: slide.description }
-                                            } />
-                                            <div className="pt-4">
+                                    <div className="flex flex-col-reverse md:flex-row items-center justify-center overflow-hidden text-white">
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: 0.2 }}
+                                            className="flex flex-col justify-center p-8 space-y-4 w-full md:w-1/2"
+                                        >
+                                            <motion.h3
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.5, delay: 0.4 }}
+                                                className="text-3xl md:text-4xl md:line-clamp-3 line-clamp-4 font-bold"
+                                            >
+                                                {slide.title}
+                                            </motion.h3>
+                                            <motion.p
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.5, delay: 0.6 }}
+                                                className="line-clamp-4"
+                                                dangerouslySetInnerHTML={{ __html: slide.description }}
+                                            />
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ duration: 0.5, delay: 0.8 }}
+                                                className="pt-4"
+                                            >
                                                 <Button className="bg-red text-white">
                                                     <Link href={slide.link} className="flex items-center gap-2">
                                                         <ArrowRight />
                                                         En savoir plus
                                                     </Link>
                                                 </Button>
-                                            </div>
-                                        </div>
-                                        <div className="relative min-h-[300px] md:min-h-[400px] bg-transparent w-full md:w-1/2 rounded-2xl">
+                                            </motion.div>
+                                        </motion.div>
+                                        <motion.div
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            transition={{ duration: 0.5, delay: 0.3 }}
+                                            className="relative min-h-[300px] md:min-h-[400px] bg-transparent w-full md:w-1/2 rounded-2xl"
+                                        >
                                             <Image
                                                 src={slide.image}
                                                 alt={`Slide ${index + 1}`}
@@ -73,7 +100,7 @@ export default function HeroCarousel() {
                                                 placeholder="blur"
                                                 blurDataURL={slide.image}
                                             />
-                                        </div>
+                                        </motion.div>
                                     </div>
                                 </div>
                             </CarouselItem>
