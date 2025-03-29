@@ -79,7 +79,7 @@ export default function HeroCarousel() {
                                                 className="pt-4"
                                             >
                                                 <Button className="bg-red text-white">
-                                                    <Link href={slide.link} className="flex items-center gap-2">
+                                                    <Link href={`/actualites/${slide.link}`} className="flex items-center gap-2">
                                                         <ArrowRight />
                                                         En savoir plus
                                                     </Link>
