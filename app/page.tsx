@@ -7,12 +7,11 @@ import ArticleSection from "@/components/articles";
 import EventsSection from "@/components/home/events";
 import Role from "@/components/home/role";
 
-function HomePage() {
+async function HomePage() {
   return (
     <div>
       <Hero />
       <MotMinistre />
-      {/* <CompteRendu />  remplace par role du ministere */}
       <Role />
       <CooperationGrid />
       <ArticleSection />
