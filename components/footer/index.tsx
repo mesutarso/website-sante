@@ -3,11 +3,8 @@ import { useMemo } from "react";
 import { Container, Section } from "@/components/craft";
 import { Link } from "next-view-transitions";
 import Logo from "@/components/shared/logo";
-import { InstitutionnalLinks, USEFULS_LINKS } from "@/menu.config";
+import { USEFULS_LINKS } from "@/menu.config";
 import { Partners } from "./partners";
-
-import { metadata } from "@/app/layout";
-import Image from "next/image";
 
 export const Footer = () => {
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -61,10 +58,10 @@ export const Footer = () => {
                     { name, href }: { name: string; href: string },
                     index: number
                   ) => (
-                    <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200">
+                    <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200" key={index}>
                       <Link
                         className="hover:underline underline-offset-4 capitalize"
-                        key={href}
+
                         href={href}
                       >
                         {name}

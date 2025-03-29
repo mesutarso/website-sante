@@ -8,20 +8,16 @@ import type { CarouselApi } from "@/components/ui/carousel"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Container } from "@/components/craft"
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { slidersQuery } from "@/wordpress/requests/sliders"
 
-type HeroCarouselProps = {
-    slides: {
-        title: string
-        description: string
-        link: string
-        image: string
-    }[]
-}
 
-export default function HeroCarousel({ slides }: HeroCarouselProps) {
+export default function HeroCarousel() {
     const [api, setApi] = useState<CarouselApi>()
     const [current, setCurrent] = useState(0)
     const [count, setCount] = useState(0)
+
+    const { data } = useSuspenseQuery(slidersQuery)
 
 
 
@@ -49,13 +45,15 @@ export default function HeroCarousel({ slides }: HeroCarouselProps) {
             <Container >
                 <Carousel setApi={setApi} className="w-full mb-8">
                     <CarouselContent className="min-h-[400px] items-center justify-center">
-                        {slides.map((slide, index) => (
+                        {data.map((slide: any, index: number) => (
                             <CarouselItem key={index} className=" ">
                                 <div className="p-1">
                                     <div className="flex flex-col-reverse md:flex-row items-center justify-center  overflow-hidden  text-white">
                                         <div className="flex flex-col justify-center p-8 space-y-4 w-full md:w-1/2">
                                             <h3 className="text-3xl md:text-4xl md:line-clamp-3 line-clamp-4   font-bold">{slide.title}</h3>
-                                            <p className="line-clamp-4">{slide.description}</p>
+                                            <p className="line-clamp-4" dangerouslySetInnerHTML={
+                                                { __html: slide.description }
+                                            } />
                                             <div className="pt-4">
                                                 <Button className="bg-red text-white">
                                                     <Link href={slide.link} className="flex items-center gap-2">
