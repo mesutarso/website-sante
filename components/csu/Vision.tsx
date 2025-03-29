@@ -12,7 +12,7 @@ function Vision() {
             <p className="text-lg">
               Dans une République engagée pour l&apos;avenir, la Couverture Santé Universelle repose sur trois piliers :
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-lg">
+            <ul className="list-disc pl-6 space-y-2 text-lg leading-[15px]">
               <li>
                 <span className="font-semibold">L&apos;équité</span>,
               </li>
@@ -20,7 +20,7 @@ function Vision() {
                 La <span className="font-semibold">qualité des soins irréprochable</span>,
               </li>
               <li>
-                et La <span className="font-semibold">protection sociale pour tous</span>.
+                La <span className="font-semibold">protection sociale pour tous</span>.
               </li>
             </ul>
             <p className="text-lg mt-6">

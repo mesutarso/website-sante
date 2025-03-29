@@ -13,7 +13,7 @@ function Hero() {
       />
       <div className="absolute inset-0 bg-blue-900/40 flex flex-col items-center justify-center text-white">
         <h1 className="text-4xl md:text-6xl font-bold text-center max-w-4xl">
-          Couverture Santé Universelle en RDC
+          Couverture Santé Universelle
         </h1>
         <p className="text-xl md:text-2xl mt-4 text-center max-w-2xl">
           Au service de la santé pour tous

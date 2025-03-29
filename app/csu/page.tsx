@@ -1,5 +1,4 @@
 import About from '@/components/csu/About'
-import Citation from '@/components/csu/Citation'
 import Hero from '@/components/csu/Hero'
 import Piliers from '@/components/csu/Piliers'
 import Realisations from '@/components/csu/Realisations'
@@ -10,11 +9,10 @@ function page() {
   return (
     <div className="min-h-screen bg-white">
       <Hero />
-      <Piliers />  
-      <Vision />
-      <Citation />
-      <Realisations />
       <About />
+      <Piliers />
+      <Vision />
+      <Realisations />
     </div>
   )
 }

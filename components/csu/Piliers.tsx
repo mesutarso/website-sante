@@ -1,9 +1,11 @@
 import Image from "next/image";
 import React from "react";
+import { Section } from "../craft";
 
 function Piliers() {
   return (
-    <section className="py-16 px-4">
+    <>
+    <Section className="py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-16 text-blue">
           Les trois piliers de notre mission
@@ -68,7 +70,12 @@ function Piliers() {
           </div>
         </div>
       </div>
-    </section>
+     
+    </Section>
+    <div className="relative min-h-[800px]">
+<Image src={'/images/sante-universelle.jpeg'} fill alt='discours' className="object-cover" />  
+</div>
+    </>
   );
 }
 
