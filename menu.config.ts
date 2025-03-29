@@ -42,30 +42,8 @@ export const MENU = [
   },
 
   {
-    name: "Francophonie",
-    href: "/francophonie",
-    submenu: [
-      {
-        name: "La Francophonie",
-        href: "/francophonie",
-      },
-      {
-        name: "Économie et Numérique",
-        href: "/#",
-      },
-      {
-        name: "Environnement & Changements Climatiques",
-        href: "/#",
-      },
-      {
-        name: "Politique, Paix et Sécurité",
-        href: "/#",
-      },
-      {
-        name: "Délégation générale",
-        href: "/delegation-generale",
-      },
-    ],
+    name: "CSU",
+    href: "/csu",
   },
   {
     name: "Actualités",

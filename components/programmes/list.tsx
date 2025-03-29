@@ -22,14 +22,11 @@ export default function ProgrammelGrid() {
     <div className={"bg-white"}>
       <Section className="md:pb-28">
         <Container className={""}>
-          <div className="text-center mb-40 ">
-            <h1 className="text-5xl font-black text-[#1a2f4b]">
-            Les programmes
-            </h1>
-            <p className="mt-3 max-w-xl mx-auto">Programmes et institutions du ministère de la santé publique, hygiène et prévoyance sociale en république démocratique du congo</p>
+          <div className="text-center mb-20 ">
+            <p className="mt-3 max-w-5xl mx-auto text-[#1a2f4b]">Le Ministère de la Santé Publique, Hygiène et Prévoyance Sociale de la République Démocratique du Congo (RDC) coordonne un vaste réseau de programmes et d’institutions stratégiques visant à assurer la protection et l’amélioration de la santé de la population congolaise. Ces programmes, répartis en plusieurs axes thématiques, couvrent l’ensemble des enjeux sanitaires du pays, de la lutte contre les maladies transmissibles et non transmissibles à la promotion de la santé communautaire, en passant par le renforcement des capacités du système de santé et la gestion des crises sanitaires.</p>
           </div>
 
-          <div className="grid grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-12">
             {categories.map((category, index) => (
               <Link key={index} href={category.href} className="group">
                 <div

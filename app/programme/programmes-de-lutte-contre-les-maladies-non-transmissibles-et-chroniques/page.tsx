@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 type AccordionItem = {
   title: string;
@@ -95,9 +96,9 @@ export default function Page() {
 
   return (
     <div>
-      <div className="bg-blue w-full min-h-[600px] text-white p-6 flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-7xl font-bold mb-4 uppercase font-rocgrotesk">
+      <div className="bg-blue w-full md:min-h-[400px] min-h-[250px] text-white p-6 flex items-center justify-center">
+        <div className="text-center max-w-5xl">
+          <h1 className="md:text-5xl text-2xl font-bold mb-4 uppercase font-rocgrotesk">
             Programmes de lutte contre les maladies non transmissibles et chroniques
           </h1>
         </div>
@@ -105,16 +106,9 @@ export default function Page() {
 
       <div className="relative min-h-screen bg-white">
         {/* Beige background covering only 30% of the height */}
-        <div className="absolute top-0 left-0 right-0 h-[30%] bg-[#f8f0e0] z-0"></div>
+        <Image alt="image catastrophe" fill src={'/images/chronique.jpeg'} className="absolute top-0 left-0 right-0 h-[30%] object-cover" />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 pt-16 pb-16">
-          {/* Background text */}
-          <div className="absolute top-0 left-0 pointer-events-none">
-            <h1 className="text-8xl md:text-7xl font-bold text-[#e9d5b9] opacity-40">
-              Programmes de lutte contre les maladies non transmissibles et chroniques
-            </h1>
-          </div>
-
           {/* Card with table */}
           <div className="relative bg-white rounded-lg shadow-md p-6 md:p-8 overflow-hidden mt-16">
             <div className="overflow-x-auto">
