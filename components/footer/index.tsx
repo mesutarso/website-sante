@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { Container, Section } from "@/components/craft";
 import { Link } from "next-view-transitions";
 import Logo from "@/components/shared/logo";
-import { USEFULS_LINKS } from "@/menu.config";
+import { InstitutionnalLinks, USEFULS_LINKS } from "@/menu.config";
 
 export const Footer = () => {
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -72,36 +72,25 @@ export const Footer = () => {
             </div>
             <div className="space-y-4 md:pl-[2em] mt-6 md:mt-0">
               <h2 className="uppercase text-white">
-                Établissements publics et structures
+                Sites Institutionnels
               </h2>
               <ul className="text-sm space-y-2 text-gray3">
-                <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200">
-                  <Link
-                    className="hover:underline underline-offset-4 capitalize"
-                    target="_blank"
-                    href="https://www.rgph-rdc.org"
-                  >
-                    BCR
-                  </Link>
-                </li>
-                <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200">
-                  <Link
-                    className="hover:underline underline-offset-4 capitalize"
-                    target="_blank"
-                    href="https://www.pgai-rdc.org"
-                  >
-                    PGAI
-                  </Link>
-                </li>
-                <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200">
-                  <Link
-                    className="hover:underline underline-offset-4 capitalize"
-                    target="_blank"
-                    href="https://www.itierdc.net"
-                  >
-                    ITIE RDC
-                  </Link>
-                </li>
+              {InstitutionnalLinks.map(
+                  (
+                    { name, href }: { name: string; href: string },
+                    index: number
+                  ) => (
+                    <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200" key={index}>
+                      <Link
+                        className="hover:underline underline-offset-4 capitalize"
+
+                        href={href}
+                      >
+                        {name}
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </Container>
