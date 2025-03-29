@@ -1,16 +1,10 @@
 import React from "react";
 import { Container, Section } from "@/components/craft";
 import EventCard from "@/components/events/Card";
-
+import { events } from "@/lib/events";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
-interface EventCardProps {
-  color: "pink" | "blue";
-  title: string;
-  location: string;
-  date: string;
-}
+
 
 function EventsSection() {
   return (
@@ -41,26 +35,4 @@ function EventsSection() {
 
 export default EventsSection;
 
-const events: EventCardProps[] = [
-  {
-    color: "pink",
-    title:
-      "JOURNÉE MONDIALE DE LA SANTÉ",
-    location: "RDC, Kinshasa, Hôtel du gouvernement",
-    date: "Lundi 7 Avril 2025",
-  },
-  {
-    color: "blue",
-    title:
-      "LE XIXE SOMMET DE LA FRANCOPHONIE, CONFÉRENCE DES CHEFS D'ÉTAT ET DE GOUVERNEMENT",
-    location: "France, Paris, Villers-Cotterêts",
-    date: "19 et 20 Nov 2024",
-  },
-  {
-    color: "blue",
-    title:
-      "LE XIXE SOMMET DE LA FRANCOPHONIE, CONFÉRENCE DES CHEFS D'ÉTAT ET DE GOUVERNEMENT",
-    location: "France, Paris, Villers-Cotterêts",
-    date: "19 et 20 Nov 2024",
-  },
-];
+

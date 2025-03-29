@@ -98,7 +98,18 @@ export default function HeroCarousel() {
                                                 fill
                                                 className="object-cover rounded-2xl"
                                                 placeholder="blur"
-                                                blurDataURL={slide.image}
+                                                blurDataURL={'data:image/svg+xml;charset=utf-8,\
+  <svg xmlns=&quot;http://www.w3.org/2000/svg&quot;>\
+    <filter id=&quot;b&quot;color-interpolation-filters=&quot;sRGB&quot;>\
+        <feGaussianBlur stdDeviation=&quot;20&quot;/>\
+        <feComponentTransfer>\
+            <feFuncA type=&quot;discrete&quot; tableValues=&quot;1 1&quot;/>\
+        </feComponentTransfer>\
+    </filter>\
+    <g filter=&quot;url(%23b)&quot;>\
+        <image width=&quot;100%&quot; height=&quot;100%&quot; href=&quot;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAgAAQAcJbACdLoAAwi2bUSAAP74Qu6oOFirJlY8OZVMZBXX2e9f/SRsDS2UEX0Lxo/JvCWyFRzjaBYzny/6POMaoi3hj6+5/8zllIyezfJeEHJ/ROthhAA=&quot;/>\
+    </g>\
+</svg>'}
                                             />
                                         </motion.div>
                                     </div>
