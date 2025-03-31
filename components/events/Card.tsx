@@ -102,7 +102,7 @@ const EventCard: React.FC<any> = ({
   return (
     <>
       <motion.div
-        className="bg-white rounded-lg p-6 flex items-center space-x-4 h-full"
+        className="bg-white rounded-lg p-6 flex flex-wrap items-center space-x-4 space-y-4 h-full"
         initial="initial"
         animate="animate"
         variants={fadeInUp}
@@ -113,7 +113,7 @@ const EventCard: React.FC<any> = ({
         ></motion.div>
         <div className="space-y-4">
           <motion.div
-            className="flex-grow w-[50%]"
+            className="flex-grow w-full md:w-[50%]"
             variants={fadeInUp}
           >
             <h2 className="text-lg font-bold text-[#1a2f4b] leading-tight">
@@ -130,7 +130,7 @@ const EventCard: React.FC<any> = ({
         </div>
 
         <motion.div
-          className="flex flex-col items-end space-y-2"
+          className="flex flex-col md:items-end space-y-2"
           variants={fadeInUp}
         >
           <motion.div
@@ -143,7 +143,7 @@ const EventCard: React.FC<any> = ({
           <motion.div variants={fadeInUp}>
             <Button
               variant={"outline"}
-              className="mt-8 bg-transparent shadow-none flex items-center gap-4 text-[11px] border-blue"
+              className="mt-8 bg-transparent shadow-none flex w-full md:items-center  gap-4 text-[11px] border-blue"
               onClick={() => setIsOpen(true)}
             >
               <span>S&apos;inscrire</span> <ArrowRight />
