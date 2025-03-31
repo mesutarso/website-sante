@@ -437,7 +437,7 @@ export default function HygienePage() {
       </section>
 
       {/* Conseils pratiques */}
-      <section className="py-16 px-4 bg-[#000] text-white">
+      <section className="py-16 px-4 bg-green text-white">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
