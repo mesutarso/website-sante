@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { Container, Section } from "@/components/craft";
 import { Link } from "next-view-transitions";
 import Logo from "@/components/shared/logo";
-import { InstitutionnalLinks, USEFULS_LINKS } from "@/menu.config";
+import { InstitutionnalLinks, USEFULS_LINKS, UTILES_LINKS } from "@/menu.config";
 
 export const Footer = () => {
   const year = useMemo(() => new Date().getFullYear(), []);
@@ -36,9 +36,9 @@ export const Footer = () => {
                     { name, href }: { name: string; href: string },
                     index: number
                   ) => (
-                    <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200" key={index}>
+                    <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200 " key={index}>
                       <Link
-                        className="hover:underline underline-offset-4 capitalize"
+                        className="hover:underline underline-offset-4 uppercase"
 
                         href={href}
                       >
@@ -52,7 +52,7 @@ export const Footer = () => {
             <div className="space-y-4 md:pl-[2em] mt-6 md:mt-0">
               <h2 className="uppercase text-white">Liens utiles</h2>
               <ul className="text-sm space-y-2 text-gray3">
-                {USEFULS_LINKS.map(
+                {UTILES_LINKS.map(
                   (
                     { name, href }: { name: string; href: string },
                     index: number
@@ -82,7 +82,7 @@ export const Footer = () => {
                   ) => (
                     <li className="hover:text-[#FFF14A] hover:pl-1 transition-all duration-200" key={index}>
                       <Link
-                        className="hover:underline underline-offset-4 capitalize"
+                        className="hover:underline underline-offset-4 uppercase"
 
                         href={href}
                       >
@@ -95,8 +95,8 @@ export const Footer = () => {
             </div>
           </Container>
           <Container className="border-t not-prose flex flex-col md:flex-row md:gap-2 gap-6 justify-between md:items-center">
-            <p className="md:text-center w-full">
-              Tous droits réservés © Ministère de la Santé Publique, Hygiène et Prévention | {year}
+            <p className="md:text-center w-full ">
+              Tous droits réservés © Ministère de la Santé Publique, Hygiène et Prévoyance sociale | {year}
             </p>
           </Container>
         </Section>

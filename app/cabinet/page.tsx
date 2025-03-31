@@ -55,7 +55,7 @@ function Cabinet() {
           <h1 className="text-5xl font-black text-center uppercase text-blue mb-24">
             Membres du Cabinet <br /> Ministère de la Santé Publique, <br /> Hygiène et Prévention
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-12 ">
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-12 ">
             {profiles.map((profile, index) => (
               <ProfileCard key={index} {...profile} />
             ))}

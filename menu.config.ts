@@ -77,6 +77,36 @@ export const USEFULS_LINKS = [
     href: "/contact",
   },
 ];
+export const UTILES_LINKS = [
+  {
+    name: "FSS",
+    href: "/#",
+  },
+  {
+    name: "FSS",
+    href: "/#",
+  },
+  {
+    name: "INSP",
+    href: "/institutions",
+  },
+  {
+    name: "AR-CSU",
+    href: "/#",
+  },
+  {
+    name: "ANICIIS",
+    href: "/#",
+  },
+  {
+    name: "OMS",
+    href: "/#",
+  },
+  {
+    name: "OIT",
+    href: "/#",
+  },
+];
 
 export const InstitutionnalLinks = [
   {
