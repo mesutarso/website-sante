@@ -40,7 +40,7 @@ export default function BilateralGrid() {
                   strokeWidth={0.5}
                 />
                 <h2 className="text-white text-xl font-bold mt-auto">
-                  <span className="block font-rocgrotesk uppercase text-5xl">
+                  <span className="block font-rocgrotesk uppercase text-3xl">
                     {category.title}
                   </span>
                 </h2>
