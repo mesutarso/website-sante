@@ -42,7 +42,7 @@ export default function page() {
                   strokeWidth={0.5}
                 />
                 <h2 className="text-white text-xl font-bold mt-auto">
-                  <span className="block font-rocgrotesk uppercase text-3xl">
+                  <span className="block font-rocgrotesk uppercase text-xl mb-2">
                     {category.title}
                   </span>
                 </h2>
