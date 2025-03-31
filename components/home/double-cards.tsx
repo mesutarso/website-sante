@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import Link from "next/link";
 
 function DoubleCards() {
     const ref1 = useRef(null);
@@ -27,10 +28,11 @@ function DoubleCards() {
                     <p className="max-w-md">
                         La Prévoyance Sociale est un pilier essentiel du Ministère de la Santé Publique, Hygiène et Prévoyance Sociale, visant à garantir la protection des citoyens contre les risques liés à la maladie, à la vieillesse, aux accidents du travail et à d'autres situations pouvant affecter leur bien-être socio-économique.
                     </p>
-
-                    <Button variant={"outline"} className="mt-8 bg-transparent flex items-center gap-4">
-                        <span>En savoir plus</span>    <ArrowRight />
-                    </Button>
+                    <Link href='/hygene'>
+                        <Button variant={"outline"} className="mt-8 bg-transparent flex items-center gap-4">
+                            <span>En savoir plus</span>    <ArrowRight />
+                        </Button>
+                    </Link>
                 </motion.div>
                 <motion.div
                     ref={ref2}
