@@ -86,7 +86,7 @@ const AnimatedSection = ({ children, delay = 0, direction = "up" }: { children: 
 }
 
 // Animated icon component
-const AnimatedIcon = ({ icon: Icon, delay = 0, color = "text-purple-600" }: { icon: LucideIcon; delay?: number; color?: string }) => {
+const AnimatedIcon = ({ icon: Icon, delay = 0, color = "text-green" }: { icon: LucideIcon; delay?: number; color?: string }) => {
   const controls = useAnimation()
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true })
@@ -128,7 +128,7 @@ const HoverCard = ({ icon: Icon, title, children, delay = 0 }: { icon: LucideIco
         <div className="mb-4">
           <AnimatedIcon icon={Icon} delay={delay + 0.2} />
         </div>
-        <h3 className="text-xl font-semibold mb-3 text-purple-900">{title}</h3>
+        <h3 className="text-xl font-semibold mb-3 text-green-900">{title}</h3>
         {children}
       </motion.div>
     </AnimatedSection>
@@ -142,13 +142,13 @@ const ProgramCard = ({ icon: Icon, title, items, delay = 0 }: { icon: LucideIcon
   return (
     <AnimatedSection delay={delay}>
       <motion.div
-        className="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-600 overflow-hidden"
+        className="bg-white p-6 rounded-xl shadow-md border-l-4 border-green overflow-hidden"
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
         <div className="flex items-center mb-4">
           <AnimatedIcon icon={Icon} delay={delay + 0.2} />
-          <h3 className="text-xl font-bold ml-4 text-purple-900">{title}</h3>
+          <h3 className="text-xl font-bold ml-4 text-green-900">{title}</h3>
         </div>
 
         <div className="mt-4 space-y-3">
@@ -161,7 +161,7 @@ const ProgramCard = ({ icon: Icon, title, items, delay = 0 }: { icon: LucideIcon
               className="flex items-start"
             >
               <div className="min-w-6 mt-1">
-                <div className="h-2 w-2 rounded-full bg-purple-600"></div>
+                <div className="h-2 w-2 rounded-full bg-green"></div>
               </div>
               <p className="ml-2 text-gray-700">{item}</p>
             </motion.div>
@@ -169,7 +169,7 @@ const ProgramCard = ({ icon: Icon, title, items, delay = 0 }: { icon: LucideIcon
         </div>
 
         <motion.button
-          className="mt-4 text-purple-600 font-medium flex items-center"
+          className="mt-4 text-green font-medium flex items-center"
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -213,10 +213,10 @@ export default function PrevoyanceSocialePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <header className="relative w-full h-[60vh] overflow-hidden bg-purple-900">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-indigo-800/70 z-10"></div>
+      <header className="relative w-full h-[60vh] overflow-hidden bg-green-900">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-indigo-800/70 z-10"></div>
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-purple-900 opacity-30"></div>
+          <div className="absolute inset-0 bg-green-900 opacity-30"></div>
           <div className="w-full h-full relative">
             <Image
               src="/images/prevoyance.jpeg"
@@ -266,7 +266,7 @@ export default function PrevoyanceSocialePage() {
           >
             <a
               href="#enjeux"
-              className="bg-white text-purple-900 px-6 py-3 rounded-full font-medium hover:bg-purple-50 transition-colors inline-flex items-center gap-2"
+              className="bg-white text-green-900 px-6 py-3 rounded-full font-medium hover:bg-green-50 transition-colors inline-flex items-center gap-2"
             >
               Explorer
               <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
@@ -302,10 +302,10 @@ export default function PrevoyanceSocialePage() {
       </section>
 
       {/* Enjeux de la Prévoyance Sociale */}
-      <section id="enjeux" className="py-16 px-4 bg-gradient-to-b from-purple-50 to-white">
+      <section id="enjeux" className="py-16 px-4 bg-gradient-to-b from-green-50 to-white">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-purple-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-green">
               1. Les enjeux de la prévoyance Sociale
             </h2>
           </AnimatedSection>
@@ -331,7 +331,7 @@ export default function PrevoyanceSocialePage() {
                         cy="50"
                         r="45"
                         fill="none"
-                        stroke="#8b5cf6"
+                        stroke="#009689"
                         strokeWidth="10"
                         strokeDasharray="283"
                         initial={{ strokeDashoffset: 283 }}
@@ -340,7 +340,7 @@ export default function PrevoyanceSocialePage() {
                         strokeLinecap="round"
                       />
                     </svg>
-                    <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-purple-600">
+                    <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-green">
                       <Counter target={15} suffix="%" />
                     </div>
                   </div>
@@ -361,7 +361,7 @@ export default function PrevoyanceSocialePage() {
                         cy="50"
                         r="45"
                         fill="none"
-                        stroke="#8b5cf6"
+                        stroke="#009689"
                         strokeWidth="10"
                         strokeDasharray="283"
                         initial={{ strokeDashoffset: 283 }}
@@ -370,7 +370,7 @@ export default function PrevoyanceSocialePage() {
                         strokeLinecap="round"
                       />
                     </svg>
-                    <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-purple-600">
+                    <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-green">
                       <Counter target={80} suffix="%" />
                     </div>
                   </div>
@@ -405,7 +405,7 @@ export default function PrevoyanceSocialePage() {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-purple-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-green-900">
               2. Politiques et programmes du ministère
             </h2>
           </AnimatedSection>
@@ -485,7 +485,7 @@ export default function PrevoyanceSocialePage() {
       </section>
 
       {/* Comment bénéficier */}
-      <section className="py-16 px-4 bg-purple-900 text-white">
+      <section className="py-16 px-4 bg-green text-white">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
@@ -505,7 +505,7 @@ export default function PrevoyanceSocialePage() {
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <FileCheck size={48} className="text-purple-200" />
+                  <FileCheck size={48} className="text-green-200" />
                 </motion.div>
                 <p className="text-white/90">
                   🔹 S&apos;inscrire à la CNSS pour bénéficier d&apos;une couverture sociale en tant que travailleur salarié.
@@ -524,7 +524,7 @@ export default function PrevoyanceSocialePage() {
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <HeartHandshake size={48} className="text-purple-200" />
+                  <HeartHandshake size={48} className="text-green-200" />
                 </motion.div>
                 <p className="text-white/90">
                   🔹 Adhérer à une mutuelle de santé pour réduire les coûts des soins médicaux.
@@ -543,7 +543,7 @@ export default function PrevoyanceSocialePage() {
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <BookOpen size={48} className="text-purple-200" />
+                  <BookOpen size={48} className="text-green-200" />
                 </motion.div>
                 <p className="text-white/90">🔹 Connaître ses droits et obligations en matière de sécurité sociale.</p>
               </motion.div>
@@ -560,7 +560,7 @@ export default function PrevoyanceSocialePage() {
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <PiggyBank size={48} className="text-purple-200" />
+                  <PiggyBank size={48} className="text-green-200" />
                 </motion.div>
                 <p className="text-white/90">🔹 Épargner pour la retraite et anticiper les risques sociaux.</p>
               </motion.div>
@@ -577,7 +577,7 @@ export default function PrevoyanceSocialePage() {
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <Share2 size={48} className="text-purple-200" />
+                  <Share2 size={48} className="text-green-200" />
                 </motion.div>
                 <p className="text-white/90">🔹 Sensibiliser son entourage à l&apos;importance de la prévoyance sociale.</p>
               </motion.div>

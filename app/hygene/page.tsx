@@ -87,7 +87,7 @@ const AnimatedIcon = ({ icon: Icon, delay = 0 }: { icon: React.ComponentType<{ s
       initial={{ scale: 0.5, opacity: 0 }}
       className="flex items-center justify-center"
     >
-      <Icon size={40} className="text-blue-600" />
+      <Icon size={40} className="blueSkySky" />
     </motion.div>
   )
 }
@@ -96,10 +96,10 @@ export default function HygienePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <header className="relative w-full h-[60vh] overflow-hidden bg-blue">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-90 to-blue z-10"></div>
+      <header className="relative w-full h-[60vh] overflow-hidden bg-blueSky">
+        <div className="absolute inset-0 bg-gradient-to-r from-blueSky-90 to-blueSky z-10"></div>
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-blue opacity-30"></div>
+          <div className="absolute inset-0 bg-blueSky opacity-30"></div>
           <div className="w-full h-full relative">
             <Image
               src="/images/hygiene.jpeg"
@@ -138,7 +138,7 @@ export default function HygienePage() {
           >
             <a
               href="#enjeux"
-              className="bg-white text-blue px-6 py-3 rounded-full font-medium hover:bg-blue-50 transition-colors inline-flex items-center gap-2"
+              className="bg-white text-blueSky px-6 py-3 rounded-full font-medium hover:bg-blueSky hover:text-white transition-colors inline-flex items-center gap-2"
             >
               Découvrir
               <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
@@ -161,7 +161,7 @@ export default function HygienePage() {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-gray-700 leading-relaxed text-center">
               L&apos;hygiène est un pilier fondamental de la santé publique en République Démocratique du Congo. Elle joue un
               rôle crucial dans la prévention des maladies, la réduction de la mortalité infantile et l&apos;amélioration de
               la qualité de vie des populations. Le Ministère de la Santé Publique, Hygiène et Prévoyance Sociale place
@@ -176,7 +176,7 @@ export default function HygienePage() {
       <section id="enjeux" className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blueSky">
               1. Les enjeux de l&apos;Hygiène
             </h2>
           </AnimatedSection>
@@ -194,7 +194,7 @@ export default function HygienePage() {
                   <div className="mb-4">
                     <AnimatedIcon icon={Droplets} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-blue text-center">Accès limité à l&apos;eau potable</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-blueSky text-center">Accès limité à l&apos;eau potable</h3>
                   <div className="flex items-center justify-center my-6">
                     <div className="relative h-32 w-32">
                       <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -213,7 +213,7 @@ export default function HygienePage() {
                           strokeLinecap="round"
                         />
                       </svg>
-                      <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-blue">
+                      <div className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-blueSky">
                         <Counter target={33} />%
                       </div>
                     </div>
@@ -229,7 +229,7 @@ export default function HygienePage() {
                   <div className="mb-4">
                     <AnimatedIcon icon={AlertTriangle} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-blue text-center">
+                  <h3 className="text-xl font-semibold mb-3 text-blueSky text-center">
                     Faible couverture des infrastructures sanitaires
                   </h3>
                   <p className="text-gray-600 text-center">
@@ -243,7 +243,7 @@ export default function HygienePage() {
                   <div className="mb-4">
                     <AnimatedIcon icon={Virus} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-blue text-center">Propagation des maladies hydriques</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-blueSky text-center">Propagation des maladies hydriques</h3>
                   <p className="text-gray-600 text-center">
                     Le choléra, la diarrhée et les infections parasitaires sont encore fréquents.
                   </p>
@@ -255,7 +255,7 @@ export default function HygienePage() {
                   <div className="mb-4">
                     <AnimatedIcon icon={Hospital} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-blue">Hygiène en milieu hospitalier</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-blueSky">Hygiène en milieu hospitalier</h3>
                   <p className="text-gray-600 text-center">
                     Les infections nosocomiales sont un problème majeur dans les établissements de santé.
                   </p>
@@ -267,7 +267,7 @@ export default function HygienePage() {
                   <div className="mb-4">
                     <AnimatedIcon icon={Users} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-blue">Sensibilisation insuffisante</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-blueSky">Sensibilisation insuffisante</h3>
                   <p className="text-gray-600 text-center">
                     Les bonnes pratiques d&apos;hygiène sont encore méconnues dans certaines communautés.
                   </p>
@@ -282,7 +282,7 @@ export default function HygienePage() {
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blue-900">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-blueSky">
               2. Stratégies et actions du ministère
             </h2>
           </AnimatedSection>
@@ -298,7 +298,7 @@ export default function HygienePage() {
             <AnimatedSection delay={0.3}>
               <div className="flex items-center mb-6">
                 <AnimatedIcon icon={Globe} />
-                <h3 className="text-2xl font-bold ml-4 text-blue-900">
+                <h3 className="text-2xl font-bold ml-4 text-blueSky">
                   A. Programme National d&apos;Hygiène aux Frontières (PNHF)
                 </h3>
               </div>
@@ -306,7 +306,7 @@ export default function HygienePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <AnimatedSection delay={0.4}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Surveillance sanitaire des points d&apos;entrée (aéroports, ports, frontières terrestres).
                   </p>
@@ -314,13 +314,13 @@ export default function HygienePage() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.5}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">Contrôle sanitaire des voyageurs et des marchandises.</p>
                 </div>
               </AnimatedSection>
 
               <AnimatedSection delay={0.6}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Prévention des épidémies transfrontalières (Ebola, choléra, Mpox, etc.).
                   </p>
@@ -334,7 +334,7 @@ export default function HygienePage() {
             <AnimatedSection delay={0.3}>
               <div className="flex items-center mb-6">
                 <AnimatedIcon icon={ShieldCheck} />
-                <h3 className="text-2xl font-bold ml-4 text-blue-900">
+                <h3 className="text-2xl font-bold ml-4 text-blueSky">
                   B. Promotion de l&apos;hygiène et de l&apos;assainissement
                 </h3>
               </div>
@@ -342,13 +342,13 @@ export default function HygienePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <AnimatedSection delay={0.4}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">Campagnes de sensibilisation dans les écoles, marchés et hôpitaux.</p>
                 </div>
               </AnimatedSection>
 
               <AnimatedSection delay={0.5}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Construction de latrines et systèmes d&apos;assainissement en zones rurales et urbaines.
                   </p>
@@ -356,7 +356,7 @@ export default function HygienePage() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.6}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Formation des professionnels de santé et des relais communautaires sur les normes d&apos;hygiène.
                   </p>
@@ -370,13 +370,13 @@ export default function HygienePage() {
             <AnimatedSection delay={0.3}>
               <div className="flex items-center mb-6">
                 <AnimatedIcon icon={Droplet} />
-                <h3 className="text-2xl font-bold ml-4 text-blue-900">C. Accès à l&apos;eau potable</h3>
+                <h3 className="text-2xl font-bold ml-4 text-blueSky">C. Accès à l&apos;eau potable</h3>
               </div>
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <AnimatedSection delay={0.4}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Collaboration avec le ministère de l&apos;Environnement et les ONG pour améliorer l&apos;accès à l&apos;eau.
                   </p>
@@ -384,7 +384,7 @@ export default function HygienePage() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.5}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Déploiement de forages et de pompes à eau potable dans les zones vulnérables.
                   </p>
@@ -392,7 +392,7 @@ export default function HygienePage() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.6}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">Contrôle de la qualité de l&apos;eau distribuée aux populations.</p>
                 </div>
               </AnimatedSection>
@@ -404,19 +404,19 @@ export default function HygienePage() {
             <AnimatedSection delay={0.3}>
               <div className="flex items-center mb-6">
                 <AnimatedIcon icon={School} />
-                <h3 className="text-2xl font-bold ml-4 text-blue-900">D. Hygiène en milieu scolaire et hospitalier</h3>
+                <h3 className="text-2xl font-bold ml-4 text-blueSky">D. Hygiène en milieu scolaire et hospitalier</h3>
               </div>
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <AnimatedSection delay={0.4}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">Équipement des écoles en infrastructures sanitaires adaptées.</p>
                 </div>
               </AnimatedSection>
 
               <AnimatedSection delay={0.5}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-white p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Distribution de kits d&apos;hygiène aux élèves et sensibilisation sur le lavage des mains.
                   </p>
@@ -424,7 +424,7 @@ export default function HygienePage() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.6}>
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
+                <div className="bg-blueSky-50 p-6 rounded-lg border-l-4 border-blueSky">
                   <p className="text-gray-700">
                     Mise en place de protocoles stricts d&apos;hygiène dans les hôpitaux pour limiter les infections
                     nosocomiales.
@@ -437,7 +437,7 @@ export default function HygienePage() {
       </section>
 
       {/* Conseils pratiques */}
-      <section className="py-16 px-4 bg-green text-white">
+      <section className="py-16 px-4 bg-blueSky text-white">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
@@ -453,7 +453,7 @@ export default function HygienePage() {
             <AnimatedSection delay={0.3}>
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl h-full flex flex-col items-center text-center">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="mb-4">
-                  <HandWash size={48} className="text-blue-200" />
+                  <HandWash size={48} className="text-white" />
                 </motion.div>
                 <p className="text-white/90">🔹 Lavez-vous les mains régulièrement avec du savon.</p>
               </div>
@@ -462,7 +462,7 @@ export default function HygienePage() {
             <AnimatedSection delay={0.4}>
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl h-full flex flex-col items-center text-center">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="mb-4">
-                  <Toilet size={48} className="text-blue-200" />
+                  <Toilet size={48} className="text-white" />
                 </motion.div>
                 <p className="text-white/90">🔹 Utilisez des latrines et évitez la défécation à l&apos;air libre.</p>
               </div>
@@ -471,7 +471,7 @@ export default function HygienePage() {
             <AnimatedSection delay={0.5}>
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl h-full flex flex-col items-center text-center">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="mb-4">
-                  <Coffee size={48} className="text-blue-200" />
+                  <Coffee size={48} className="text-white" />
                 </motion.div>
                 <p className="text-white/90">🔹 Boire de l&apos;eau potable et bien conserver les aliments.</p>
               </div>
@@ -480,7 +480,7 @@ export default function HygienePage() {
             <AnimatedSection delay={0.6}>
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl h-full flex flex-col items-center text-center">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="mb-4">
-                  <Trash2 size={48} className="text-blue-200" />
+                  <Trash2 size={48} className="text-white" />
                 </motion.div>
                 <p className="text-white/90">
                   🔹 Gardez votre environnement propre en jetant les déchets dans les endroits appropriés.
@@ -491,7 +491,7 @@ export default function HygienePage() {
             <AnimatedSection delay={0.7}>
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl h-full flex flex-col items-center text-center">
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="mb-4">
-                  <Share2 size={48} className="text-blue-200" />
+                  <Share2 size={48} className="text-white" />
                 </motion.div>
                 <p className="text-white/90">🔹 Sensibilisez votre entourage aux bonnes pratiques d&apos;hygiène.</p>
               </div>

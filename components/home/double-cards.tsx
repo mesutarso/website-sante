@@ -55,13 +55,14 @@ function DoubleCards() {
             mesures sanitaires pour prévenir les maladies et améliorer la
             qualité de vie des populations.
           </p>
-
-          <Button
-            variant={"outline"}
-            className="mt-8 bg-transparent flex items-center gap-4"
-          >
-            <span>En savoir plus</span> <ArrowRight />
-          </Button>
+          <Link href="/prevoyance-sociale" className="pointer"> 
+            <Button
+                variant={"outline"}
+                className="mt-8 bg-transparent flex items-center gap-4"
+            >
+                <span>En savoir plus</span> <ArrowRight />
+            </Button>
+          </Link>
         </motion.div>
       </Container>
     </Section>
