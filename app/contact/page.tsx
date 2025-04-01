@@ -1,5 +1,11 @@
 import ContactContent from "@/components/contact/content";
 import { Section } from "@/components/craft";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Contactez-nous",
+    description: "Contactez-nous pour toute question ou information complémentaire. Notre équipe est là pour vous aider.",
+}
 
 export default function ContactPage() {
     return (
