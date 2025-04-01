@@ -155,7 +155,7 @@ const TimelineItem = ({
       transition={{ duration: 0.5, delay }}
     >
       <div className="flex flex-col items-center mr-4">
-        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 text-white font-bold text-sm">
+        <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue text-white font-bold text-sm">
           {year}
         </div>
         <div className="w-1 flex-grow bg-blue-200 mt-2"></div>
@@ -687,7 +687,7 @@ export default function SecretariatGeneralPage() {
 
           <AnimatedSection delay={0.4}>
             <motion.button
-              className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-colors"
+              className="bg-blue text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-colors"
               whileHover={{ scale: 1.05, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)" }}
               whileTap={{ scale: 0.95 }}
             >

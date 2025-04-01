@@ -45,7 +45,7 @@ const AnimatedCard = ({ icon: Icon, title, children, delay = 0 }: { icon: React.
         whileHover={{
           scale: 1.03,
           boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-          borderColor: "#1e40af",
+          borderColor: "#063956",
         }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
@@ -171,7 +171,7 @@ export default function InspectionGeneralePage() {
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center">
             <motion.div className="mb-8 flex justify-center" animate={shieldControls}>
-              <Shield size={80} className="text-blue-600" />
+              <Shield size={80} className="text-blue" />
             </motion.div>
 
             <motion.h1
