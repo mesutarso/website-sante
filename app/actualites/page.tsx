@@ -8,23 +8,7 @@ interface ArticleProps {
   date: string;
 }
 
-const data: ArticleProps[] = [
-  {
-    image: "/images/image.png",
-    title: "L'ONU adopte une résolution sur la coopération des Casques ...",
-    date: "20 Novembre 2024",
-  },
-  {
-    image: "/images/image.png",
-    title: "L'ONU adopte une résolution sur la coopération des Casques ...",
-    date: "20 Novembre 2024",
-  },
-  {
-    image: "/images/image.png",
-    title: "L'ONU adopte une résolution sur la coopération des Casques ...",
-    date: "20 Novembre 2024",
-  },
-];
+export const dynamic = "force-dynamic";
 
 async function Actualites() {
   const queryClient = getQueryClient()

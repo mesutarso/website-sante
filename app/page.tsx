@@ -6,6 +6,8 @@ import ArticleSection from "@/components/articles";
 import EventsSection from "@/components/home/events";
 import Role from "@/components/home/role";
 
+export const dynamic = "force-dynamic";
+
 async function HomePage() {
   return (
     <div>
