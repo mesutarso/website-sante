@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "blanchedalmond-narwhal-171097.hostingersite.com",
+        hostname: "administration.sante.gouv.cd",
       },
     ],
   },
