@@ -3,16 +3,16 @@ import { getAllArticles, getLastestArticles } from "../collections/articles";
 
 export const articlesQuery = queryOptions({
   queryKey: ["latest-articles"],
-  queryFn: () => {
-    const articles = getLastestArticles();
+  queryFn: async () => {
+    const articles = await getLastestArticles();
     return articles;
   },
 });
 
 export const allArticlesQuery = queryOptions({
   queryKey: ["all-articles"],
-  queryFn: () => {
-    const articles = getAllArticles();
+  queryFn: async () => {
+    const articles = await getAllArticles();
     return articles;
   },
 });

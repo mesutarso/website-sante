@@ -17,7 +17,7 @@ export const GET_SLIDERS = `query getSliders {
 }`;
 
 export const GET_LASTEST_ARTICLES = `query getLastPosts {
-  posts(first: 4) {
+  posts(first: 5) {
     edges {
       node {
         id

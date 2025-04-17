@@ -43,101 +43,103 @@ export default function HeroCarousel() {
     }
 
     return (
-        <div className="space-y-8 py-10 px-4 md:px-6">
-            <Container >
-                <Carousel setApi={setApi} className="w-full mb-8">
-                    <CarouselContent className="min-h-[400px] items-center justify-center">
-                        {data.map((slide: any, index: number) => (
-                            <CarouselItem key={index} className=" ">
-                                <div className="p-1">
-                                    <div className="flex flex-col-reverse md:flex-row items-center justify-center overflow-hidden text-white">
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.5, delay: 0.2 }}
-                                            className="flex flex-col justify-center p-8 space-y-4 w-full md:w-1/2"
-                                        >
-                                            <motion.h3
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.5, delay: 0.4 }}
-                                                className="text-3xl md:text-4xl md:line-clamp-3 line-clamp-4 font-bold"
-                                            >
-                                                {slide.title}
-                                            </motion.h3>
-                                            <motion.p
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.5, delay: 0.6 }}
-                                                className="line-clamp-4"
-                                                dangerouslySetInnerHTML={{ __html: slide.description }}
-                                            />
+        <div className="main relative min-h-[500px]">
+            {data.map((slide: any, index: number) => (
+                <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-500 ${current === index ? 'opacity-100' : 'opacity-0'}`}
+                >
+                    <Image
+                        src={slide.image}
+                        alt={`Slide ${index + 1}`}
+                        fill
+                        className="object-cover"
+                        placeholder="blur"
+                        blurDataURL={slide.image}
+                    />
+                    <div className="absolute inset-0 bg-black/50" />
+                </div>
+            ))}
+            <div className="relative z-10 space-y-8 py-10 px-4 md:px-6">
+                <Container>
+                    <Carousel setApi={setApi} className="w-full mb-8">
+                        <CarouselContent className="min-h-[500px] items-center justify-center">
+                            {data.map((slide: any, index: number) => (
+                                <CarouselItem key={index} className="relative">
+                                    <div className="relative h-full flex items-center">
+                                        <Container>
                                             <motion.div
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.5, delay: 0.8 }}
-                                                className="pt-4"
+                                                transition={{ duration: 0.5, delay: 0.2 }}
+                                                className="flex flex-col justify-center p-8 space-y-4 max-w-2xl"
                                             >
-                                                <Button className="bg-red text-white">
-                                                    <Link href={`/actualites/${slide.link}`} className="flex items-center gap-2">
-                                                        <ArrowRight />
-                                                        En savoir plus
-                                                    </Link>
-                                                </Button>
+                                                <motion.h3
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ duration: 0.5, delay: 0.4 }}
+                                                    className="text-3xl md:text-4xl md:line-clamp-3 line-clamp-4 font-bold text-white"
+                                                >
+                                                    {slide.title}
+                                                </motion.h3>
+                                                <motion.p
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ duration: 0.5, delay: 0.6 }}
+                                                    className="line-clamp-4 text-white"
+                                                    dangerouslySetInnerHTML={{ __html: slide.description }}
+                                                />
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ duration: 0.5, delay: 0.8 }}
+                                                    className="pt-4"
+                                                >
+                                                    <Button className="bg-red text-white">
+                                                        <Link href={`/actualites/${slide.link}`} className="flex items-center gap-2">
+                                                            <ArrowRight />
+                                                            En savoir plus
+                                                        </Link>
+                                                    </Button>
+                                                </motion.div>
                                             </motion.div>
-                                        </motion.div>
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0.9 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ duration: 0.5, delay: 0.3 }}
-                                            className="relative min-h-[300px] md:min-h-[400px] bg-transparent w-full md:w-1/2 rounded-2xl"
-                                        >
-                                            <Image
-                                                src={slide.image}
-                                                alt={`Slide ${index + 1}`}
-                                                fill
-                                                className="object-cover rounded-2xl"
-                                                placeholder="blur"
-                                                blurDataURL={'data:image/svg+xml;charset=utf-8,\
-  <svg xmlns=&quot;http://www.w3.org/2000/svg&quot;>\
-    <filter id=&quot;b&quot;color-interpolation-filters=&quot;sRGB&quot;>\
-        <feGaussianBlur stdDeviation=&quot;20&quot;/>\
-        <feComponentTransfer>\
-            <feFuncA type=&quot;discrete&quot; tableValues=&quot;1 1&quot;/>\
-        </feComponentTransfer>\
-    </filter>\
-    <g filter=&quot;url(%23b)&quot;>\
-        <image width=&quot;100%&quot; height=&quot;100%&quot; href=&quot;data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAgAAQAcJbACdLoAAwi2bUSAAP74Qu6oOFirJlY8OZVMZBXX2e9f/SRsDS2UEX0Lxo/JvCWyFRzjaBYzny/6POMaoi3hj6+5/8zllIyezfJeEHJ/ROthhAA=&quot;/>\
-    </g>\
-</svg>'}
-                                            />
-                                        </motion.div>
+                                        </Container>
                                     </div>
-                                </div>
-                            </CarouselItem>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="md:-left-10 -left-2" />
+                        <CarouselNext className="md:-right-12 -right-2" />
+                    </Carousel>
+
+                    <div className="flex justify-center gap-2 mt-8">
+                        {Array.from({ length: count }).map((_, index) => (
+                            <button
+                                key={index}
+                                className={`w-3 h-3 rounded-full transition-all ${current === index ? "bg-red scale-125" : "bg-white hover:bg-muted-foreground/50"}`}
+                                onClick={() => handleDotClick(index)}
+                                aria-label={`Aller au slide ${index + 1}`}
+                            />
                         ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="md:-left-10 -left-2" />
-                    <CarouselNext className="md:-right-12 -right-2" />
-                </Carousel>
+                    </div>
+                </Container>
+            </div>
 
-
-                <div className="flex justify-center gap-2 mt-8">
-                    {Array.from({ length: count }).map((_, index) => (
-                        <button
-                            key={index}
-                            className={`w-3 h-3 rounded-full transition-all ${current === index ? "bg-red scale-125" : "bg-white hover:bg-muted-foreground/50"
-                                }`}
-                            onClick={() => handleDotClick(index)}
-                            aria-label={`Aller au slide ${index + 1}`}
-                        />
-                    ))}
+            <div className={
+                'absolute -bottom-[50px] left-4 right-4 md:left-auto md:right-[50px] ' +
+                'bg-white z-20 w-auto md:w-[500px] shadow p-3 md:p-4 rounded-xl'
+            }>
+                <div className="event-cat text-blue flex mb-2 md:mb-4">
+                    <p className={'bg-gray-200 px-2 py-1 rounded-md text-xs font-semibold uppercase'}>Evenement / Lundi 7 Avril 2025</p>
                 </div>
-
-
-            </Container>
-
+                <div>
+                    <p className={'font-bold uppercase text-xs md:text-sm text-blue'}>
+                        Journée mondiale de la santé
+                    </p>
+                </div>
+            </div>
         </div>
+
     )
 }
 
