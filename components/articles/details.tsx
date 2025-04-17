@@ -28,7 +28,7 @@ function DetailsArticles({ article }: DetailsArticlesProps) {
             <div className="bg-blue min-h-[600px] text-white p-6 relative">
                 <Section>
                     <Container>
-                        {/* Date */}
+
                         <motion.div
                             ref={dateRef}
                             initial={{ opacity: 0, y: 20 }}

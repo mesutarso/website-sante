@@ -8,10 +8,11 @@ export const fetchGraphql = async (query: string, variables?: any) => {
     body: JSON.stringify({ query, variables }),
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Basic " + btoa("admin:Mesut@2023Tarso@2024"),
     },
   });
 
-  const { data } = await response.json();
+  const data = await response.json();
 
-  return data;
+  return data.data;
 };

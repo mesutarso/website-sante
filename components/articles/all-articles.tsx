@@ -43,29 +43,7 @@ const AllArticles = () => {
                             internationale et Francophonie
                         </h2>
                     </div>
-                    {/* <div className="flex space-x-4 mb-8">
-                <Select>
-                  <SelectTrigger className="w-[180px] bg-transparent border-blue text-blue">
-                    <SelectValue placeholder="Categorie" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Toutes les catégories</SelectItem>
-                    <SelectItem value="cooperation">Coopération</SelectItem>
-                    <SelectItem value="francophonie">Francophonie</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Select>
-                  <SelectTrigger className="w-[180px] bg-transparent border-blue text-blue">
-                    <SelectValue placeholder="Date" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">Toutes les dates</SelectItem>
-                    <SelectItem value="2024">2024</SelectItem>
-                    <SelectItem value="2023">2023</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div> */}
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 mt-24">
                         {data.slice(1).map((item: any, key: number) => (
                             <motion.div

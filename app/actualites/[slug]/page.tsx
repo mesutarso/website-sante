@@ -1,7 +1,7 @@
-
 import { getArticleBySlug } from "@/wordpress/collections/articles";
 import { notFound } from "next/navigation";
 import DetailsArticles from "@/components/articles/details";
+
 
 
 type Props = {
@@ -10,6 +10,7 @@ type Props = {
   }>;
 };
 
+
 async function Actualite({ params }: Props) {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
@@ -17,7 +18,9 @@ async function Actualite({ params }: Props) {
     notFound();
   }
   return (
+
     <DetailsArticles article={article} />
+
   );
 }
 

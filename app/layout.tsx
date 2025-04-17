@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sante.gouv.cd"),
 };
 
+export const dynamic = "force-dynamic";
+
 export default function RootLayout({
   children,
 }: Readonly<{
