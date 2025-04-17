@@ -1,5 +1,5 @@
 export const GET_SLIDERS = `query getSliders {
-  posts(first: 5) {
+  posts(first: 4) {
     edges {
       node {
         id
@@ -17,7 +17,7 @@ export const GET_SLIDERS = `query getSliders {
 }`;
 
 export const GET_LASTEST_ARTICLES = `query getLastPosts {
-  posts(first: 5) {
+  posts(first: 4) {
     edges {
       node {
         id
