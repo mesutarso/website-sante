@@ -18,9 +18,9 @@ function ArticleSection() {
             Actualités
           </h1>
           <Container>
-            <Suspense fallback={<div>Loading...</div>}>
-              <LatestArticles />
-            </Suspense>
+
+            <LatestArticles />
+
           </Container>
         </Container>
         <div className="text-center mt-6">

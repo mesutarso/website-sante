@@ -1,9 +1,9 @@
-// Description: WordPress API functions
-// Used to fetch data from a WordPress site using the WordPress REST API
-// Types are imported from `wp.d.ts`
+"use server";
 
 import querystring from "query-string";
 import { revalidateTag } from "next/cache";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 import type {
   Post,
@@ -14,10 +14,19 @@ import type {
   FeaturedMedia,
 } from "./wordpress.d";
 
-const baseUrl = process.env.WORDPRESS_API_URL;
+// Interface pour les posts simplifiés
+interface SimplePost {
+  title: string;
+  date: string;
+  image: string;
+  slug: string;
+  id: number;
+}
+
+const baseUrl = process.env.WORDPRESS_API;
 
 if (!baseUrl) {
-  throw new Error("WORDPRESS_API_URL environment variable is not defined");
+  throw new Error("WORDPRESS_API environment variable is not defined");
 }
 
 interface FetchOptions {
@@ -76,10 +85,11 @@ export async function getAllPosts(filterParams?: {
   tag?: string;
   category?: string;
   search?: string;
+  per_page?: number;
 }): Promise<Post[]> {
   const query: Record<string, any> = {
     _embed: true,
-    per_page: 100,
+    per_page: filterParams?.per_page || 100,
   };
 
   if (filterParams?.search) {
@@ -430,3 +440,22 @@ export async function revalidateWordPressData(tags: string[] = ["wordpress"]) {
 
 // Export error class for error handling
 export { WordPressAPIError };
+
+export async function getSimplePosts(filterParams?: {
+  author?: string;
+  tag?: string;
+  category?: string;
+  search?: string;
+  per_page?: number;
+}): Promise<SimplePost[]> {
+  const posts = await getAllPosts(filterParams);
+
+  return posts.map((post) => ({
+    title: post.title.rendered,
+    date: format(new Date(post.date), "dd/MM/yyyy", { locale: fr }),
+    image:
+      (post as any)._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
+    slug: post.slug,
+    id: post.id,
+  }));
+}

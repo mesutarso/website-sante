@@ -6,7 +6,6 @@ export const fetchGraphql = async (query: string, variables?: any) => {
     body: JSON.stringify({ query, variables }),
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Basic " + btoa("admin:Mesut@2023Tarso@2024"),
     },
   });
 

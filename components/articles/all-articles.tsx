@@ -2,17 +2,53 @@
 import { Section, Container } from "@/components/craft";
 import CardArticle from "./Card";
 import FirstCard from "./fisrt-card";
-import { useSuspenseQuery } from '@tanstack/react-query'
-import { allArticlesQuery } from "@/wordpress/requests/articles"
+import { useQuery, } from '@tanstack/react-query'
 import { useRef } from "react";
 import { useInView, motion } from "motion/react";
+import { getSimplePosts } from "@/lib/wordpress";
+import { Skeleton } from "../ui/skeleton";
 
 const AllArticles = () => {
-    const { data } = useSuspenseQuery(allArticlesQuery)
+    const { data, isLoading } = useQuery({
+        queryKey: ['articles'],
+        queryFn: () => getSimplePosts({ per_page: 100 })
+    })
     const firstSectionRef = useRef(null);
     const secondSectionRef = useRef(null);
     const isFirstSectionInView = useInView(firstSectionRef, { once: true, margin: "-100px" });
     const isSecondSectionInView = useInView(secondSectionRef, { once: true, margin: "-100px" });
+
+    if (isLoading) {
+        return (
+            <div>
+                <Section className="bg-blue w-full text-white p-6">
+                    <Container>
+                        <div className="h-[400px]">
+                            <Skeleton className="w-full h-full" />
+                        </div>
+                    </Container>
+                </Section>
+                <Section className="bg-yellowSky">
+                    <Container>
+                        <div className="mt-12">
+                            <Skeleton className="h-8 w-2/3" />
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 mt-24">
+                            {[...Array(8)].map((_, index) => (
+                                <div key={index} className="space-y-3">
+                                    <Skeleton className="h-48 w-full" />
+                                    <Skeleton className="h-4 w-3/4" />
+                                    <Skeleton className="h-4 w-1/2" />
+                                </div>
+                            ))}
+                        </div>
+                    </Container>
+                </Section>
+            </div>
+        )
+    }
+
+    if (!data) return null;
 
     return <div>
         <motion.div
