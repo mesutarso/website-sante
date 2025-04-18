@@ -16,8 +16,8 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Ministère de la Santé Publique, Hygiène et Prévention ",
-  description: "Site Officiel du Ministère de la Santé Publique, Hygiène et Prévention",
+  title: "Ministère de la Santé Publique, Hygiène et prévoyance sociale ",
+  description: "Site Officiel du Ministère de la Santé Publique, Hygiène et prévoyance sociale",
   metadataBase: new URL("https://sante.gouv.cd"),
 };
 

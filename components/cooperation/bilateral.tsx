@@ -24,7 +24,7 @@ export default function BilateralGrid() {
             <h1 className="text-5xl font-black text-[#1a2f4b]">
               Organisation
             </h1>
-            <p className="mt-3 max-w-xl mx-auto">Le Ministère de la Santé Publique, Hygiène et Prévention de la République Démocratique du Congo est constitué de quatre principales entités.</p>
+            <p className="mt-3 max-w-xl mx-auto">Le Ministère de la Santé Publique, Hygiène et prévoyance sociale de la République Démocratique du Congo est constitué de quatre principales entités.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">

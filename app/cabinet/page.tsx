@@ -20,14 +20,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 }) => {
   return (
     <div
-      className={`overflow-hidden  ${
-        borderColor || "border-gray-200"
-      } shadow-none`}
+      className={`overflow-hidden  ${borderColor || "border-gray-200"
+        } shadow-none`}
     >
       <div
-        className={`aspect-[4/3] rounded-xl relative ${
-          backgroundColor || "bg-gray-100"
-        }`}
+        className={`aspect-[4/3] rounded-xl relative ${backgroundColor || "bg-gray-100"
+          }`}
       >
         {imageSrc && (
           <Image
@@ -53,7 +51,7 @@ function Cabinet() {
       <Section>
         <Container>
           <h1 className="text-5xl font-black text-center uppercase text-blue mb-24">
-            Membres du Cabinet <br /> Ministère de la Santé Publique, <br /> Hygiène et Prévention
+            Membres du Cabinet <br /> Ministère de la Santé Publique, <br /> Hygiène et prévoyance sociale
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-12 ">
             {profiles.map((profile, index) => (
