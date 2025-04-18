@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import LatestArticles from "./latest-articles";
 import Link from "next/link";
+import { Suspense } from "react";
 
 function ArticleSection() {
 
@@ -17,7 +18,9 @@ function ArticleSection() {
             Actualités
           </h1>
           <Container>
-            <LatestArticles />
+            <Suspense fallback={<div>Loading...</div>}>
+              <LatestArticles />
+            </Suspense>
           </Container>
         </Container>
         <div className="text-center mt-6">

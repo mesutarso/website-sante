@@ -1,5 +1,3 @@
-"use server";
-
 const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL as string;
 
 export const fetchGraphql = async (query: string, variables?: any) => {

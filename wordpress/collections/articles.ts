@@ -1,4 +1,3 @@
-"use server";
 import {
   GET_ARTICLE_BY_SLUG,
   GET_LASTEST_ARTICLES,
