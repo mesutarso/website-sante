@@ -28,7 +28,7 @@ const CardArticle: React.FC<ArticleProps> = ({ image, title, date, slug }) => {
         <Link href={`/actualites/${slug}`}>
           <CardHeader className="relative p-0">
             <Image
-              src={image}
+              src={image || "/images/prevoyance.jpeg"}
               alt={`image de l'article: ${title}`}
               width={400}
               height={200}

@@ -29,7 +29,7 @@ const FirstCard = ({ data }: { data: any }) => {
                 className="relative aspect-video rounded-lg overflow-hidden flex items-center justify-center"
             >
                 <Image
-                    src={data.image}
+                    src={data?.image || "/images/prevoyance.jpeg"}
                     alt="Group of officials"
                     fill
                     className="object-cover"

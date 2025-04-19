@@ -10,7 +10,8 @@ export async function getSliders() {
     return {
       title: edge.node.title,
       description: edge.node.excerpt,
-      image: edge.node.featuredImage.node.sourceUrl,
+      image:
+        edge.node.featuredImage?.node?.sourceUrl || "/images/prevoyance.jpeg",
       link: edge.node.slug,
     };
   });

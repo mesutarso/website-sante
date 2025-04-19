@@ -45,7 +45,7 @@ export default function HeroCarousel() {
                     style={{ zIndex: 1 }}
                 >
                     <Image
-                        src={slide.image || "/placeholder.svg"}
+                        src={slide.image || "/images/prevoyance.jpeg"}
                         alt={`Slide ${index + 1}`}
                         fill
                         className="object-cover"
