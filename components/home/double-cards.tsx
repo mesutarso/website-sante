@@ -22,7 +22,7 @@ function DoubleCards() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-blueSky p-16 w-full lg:w-1/2 rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl space-y-12"
         >
-          <h2 className="text-3xl lg:text-5xl font-bold uppercase">Prévoyance</h2>
+          <h2 className="text-3xl lg:text-5xl font-bold uppercase">Prévoyance Sociale</h2>
           <p className="max-w-md">
             La Prévoyance Sociale est un pilier essentiel du Ministère de la
             Santé Publique, Hygiène et Prévoyance Sociale, visant à garantir la
@@ -47,7 +47,7 @@ function DoubleCards() {
           className="bg-green p-16 w-full md:w-1/2 rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl space-y-12"
         >
           <h2 className="text-3xl lg:text-5xl font-bold uppercase">
-            Prévoyance Sociale
+            Hygiène
           </h2>
           <p className="max-w-md">
             L&apos;Hygiène est un levier fondamental de la prévention en santé
