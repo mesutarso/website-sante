@@ -2,7 +2,7 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { motion } from "motion/react";
 import { ContactForm } from "./form";
-import { Container, Section } from "../craft";
+import { Container } from "../craft";
 
 export default function ContactContent() {
     return (
@@ -43,10 +43,10 @@ export default function ContactContent() {
                                         <Phone className="w-5 h-5 text-red-500" />
                                     </div>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <h3 className="font-semibold text-[#2D3748]">Téléphone</h3>
                                     <p className="text-gray-600">+243 81 000 0000</p>
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className="flex items-start space-x-4">

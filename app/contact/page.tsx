@@ -18,7 +18,7 @@ export default function ContactPage() {
                         Contactez-nous
                     </h1>
                     <p className=" max-w-xl mx-auto">
-                        Pour toute question ou information complémentaire, n'hésitez pas à nous contacter. Notre équipe est là pour vous aider.
+                        Pour toute question ou information complémentaire, n&apos;hésitez pas à nous contacter. Notre équipe est là pour vous aider.
                     </p>
                 </div>
             </Section>

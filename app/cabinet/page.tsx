@@ -72,22 +72,22 @@ const profiles = [
     borderColor: "border-blue-300",
   },
   {
-    name: "Albert Raphael MONDONGA",
+    name: " ",
     title: "Directeur du Cabinet Adjoint",
     backgroundColor: "bg-[#1a2f4b]",
   },
   {
-    name: "Julius ELUMBA",
+    name: "",
     title: "Conseiller",
     backgroundColor: "bg-[#1a2f4b]",
   },
   {
-    name: "Charles BATUBENGE",
+    name: " ",
     title: "Conseiller",
     backgroundColor: "bg-[#1a2f4b]",
   },
   {
-    name: "Henriette BAKALI",
+    name: " ",
     title: "Conseiller",
     backgroundColor: "bg-[#1a2f4b]",
   },
