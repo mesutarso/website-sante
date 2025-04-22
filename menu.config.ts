@@ -69,8 +69,8 @@ export const USEFULS_LINKS = [
     href: "/institutions",
   },
   {
-    name: "Mentions légales",
-    href: "/mentions-legales",
+    name: "Hôpitaux",
+    href: "/hopitaux",
   },
   {
     name: "Contact",
