@@ -70,12 +70,12 @@ export default function HeroCarousel() {
                         <CarouselContent className="min-h-[500px] relative">
                             {data.map((slide: any, index: number) => (
                                 <CarouselItem key={index} className="relative h-full flex items-center">
-                                    <Container>
+                                    <div className="mx-auto">
                                         <div
                                             className={`flex flex-col justify-center p-8 space-y-4 max-w-2xl transition-all duration-700 ${current === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                                                 }`}
                                         >
-                                            <h3 className="text-3xl md:text-4xl md:line-clamp-3 line-clamp-4 font-bold text-white">
+                                            <h3 className="text-3xl md:text-4xl md:line-clamp-4 line-clamp-5 font-bold text-white">
                                                 {slide.title}
                                             </h3>
                                             <div
@@ -91,7 +91,7 @@ export default function HeroCarousel() {
                                                 </Button>
                                             </div>
                                         </div>
-                                    </Container>
+                                    </div>
                                 </CarouselItem>
                             ))}
                         </CarouselContent>

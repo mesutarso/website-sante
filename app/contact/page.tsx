@@ -1,5 +1,5 @@
 import ContactContent from "@/components/contact/content";
-import { Section } from "@/components/craft";
+import { Container, Section } from "@/components/craft";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export default function ContactPage() {
     return (
         <>
             <Section className="bg-blue text-white">
-                <div
+                <Container
                     className="text-center mb-16"
                 >
                     <h1 className="text-4xl font-bold  mb-4">
@@ -20,7 +20,7 @@ export default function ContactPage() {
                     <p className=" max-w-xl mx-auto">
                         Pour toute question ou information complémentaire, n&apos;hésitez pas à nous contacter. Notre équipe est là pour vous aider.
                     </p>
-                </div>
+                </Container>
             </Section>
             <Section>
                 <ContactContent />
