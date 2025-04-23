@@ -103,7 +103,7 @@ const AllArticles = () => {
                             Aucun article disponible
                         </h2>
                         <p className="text-gray-700">
-                            Aucun article n'a été trouvé pour le moment.
+                            Aucun article n&apos;a été trouvé pour le moment.
                         </p>
                     </div>
                 </Container>
@@ -151,7 +151,7 @@ const AllArticles = () => {
                                     image={item.image}
                                     title={item.title}
                                     date={item.date}
-                                    slug={item.link}
+                                    slug={item.slug}
                                 />
                             </motion.div>
                         ))}

@@ -76,7 +76,7 @@ function DetailsArticles({ article, url }: DetailsArticlesProps) {
                                 transition={{ duration: 0.5, delay: 0.6 }}
                                 className="md:w-2/3"
                             >
-                                <div className="relative aspect-video rounded-lg overflow-hidden">
+                                <div className="relative aspect-video rounded-lg overflow-hidden mt-5 md:mt-0">
                                     <Image
                                         src={article?.image}
                                         alt="Group of officials at the Secretariat General"

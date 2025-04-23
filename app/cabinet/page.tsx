@@ -50,7 +50,7 @@ function Cabinet() {
     <div className="bg-[#f6f8fc]">
       <Section>
         <Container>
-          <h1 className="text-2xl md:text-5xl font-black text-center uppercase text-blue mb-24">
+          <h1 className="md:text-5xl text-3xl font-black text-center uppercase text-blue mb-24">
             Membres du Cabinet <br /> Ministère de la Santé Publique, <br /> Hygiène et prévoyance sociale
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-12 ">

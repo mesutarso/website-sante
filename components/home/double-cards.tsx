@@ -30,7 +30,7 @@ function DoubleCards() {
             vieillesse, aux accidents du travail et à d&apos;autres situations
             pouvant affecter leur bien-être socio-économique.
           </p>
-          <Link href="/hygene">
+          <Link href="/prevoyance-sociale">
             <Button
               variant={"outline"}
               className="mt-8 bg-transparent flex items-center gap-4"
@@ -55,7 +55,7 @@ function DoubleCards() {
             mesures sanitaires pour prévenir les maladies et améliorer la
             qualité de vie des populations.
           </p>
-          <Link href="/prevoyance-sociale" className="pointer"> 
+          <Link href="/hygene" className="pointer"> 
             <Button
                 variant={"outline"}
                 className="mt-8 bg-transparent flex items-center gap-4"
