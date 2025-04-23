@@ -26,10 +26,10 @@ export async function generateMetadata(
 
   return {
     title: article.title,
-    description: article.description || "Article du Ministère de la Santé de la République Démocratique du Congo",
+    description: "Article du Ministère de la Santé de la République Démocratique du Congo",
     openGraph: {
       title: article.title,
-      description: article.description || "Article du Ministère de la Santé de la République Démocratique du Congo",
+      description: "Article du Ministère de la Santé de la République Démocratique du Congo",
       images: article.image ? [{
         url: article.image,
         width: 1200,
@@ -45,7 +45,7 @@ export async function generateMetadata(
     twitter: {
       card: "summary_large_image",
       title: article.title,
-      description: article.description || "Article du Ministère de la Santé de la République Démocratique du Congo",
+      description: "Article du Ministère de la Santé de la République Démocratique du Congo",
       images: article.image ? [{
         url: article.image,
         width: 1200,
