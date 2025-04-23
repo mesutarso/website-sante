@@ -134,8 +134,7 @@ const AllArticles = () => {
                 <Container>
                     <div className="mt-12 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
                         <h2 className="text-2xl font-bold max-w-2xl text-blue">
-                            Découvrez les dernières nouvelles de la coopération
-                            internationale et Francophonie
+                            Découvrez les dernières nouvelles
                         </h2>
                     </div>
 

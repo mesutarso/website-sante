@@ -50,7 +50,7 @@ const FirstCard = ({ data }: { data: any }) => {
                 <p className="text-gray-300 font-medium text-lg line-clamp-4" dangerouslySetInnerHTML={{ __html: data.excerpt }}>
                 </p>
                 <Button variant="outline" className="text-blue border-white">
-                    <Link href={`/actualites/${data.link}`}>
+                    <Link href={`/actualites/${data.slug}`}>
                         Lire cet article
                     </Link>
                     <ArrowRight className="ml-2 h-4 w-4" />
