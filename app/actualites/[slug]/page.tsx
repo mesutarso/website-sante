@@ -1,4 +1,4 @@
-import { getArticleBySlug } from "@/wordpress/collections/articles";
+import { getArticleBySlug, getAllArticlesSlugs } from "@/lib/wordpress";
 import { notFound } from "next/navigation";
 import DetailsArticles from "@/components/articles/details";
 import { Metadata, ResolvingMetadata } from "next";
@@ -8,6 +8,12 @@ type Props = {
     slug: string;
   }>;
 };
+
+export async function generateStaticParams() {
+  const slugs = await getAllArticlesSlugs();
+
+  return slugs.map(({ slug }) => slug);
+}
 
 export async function generateMetadata(
   { params }: Props,
