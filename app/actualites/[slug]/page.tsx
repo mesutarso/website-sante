@@ -33,6 +33,7 @@ export async function generateMetadata(
   return {
     title: article.title,
     description: "Article du Ministère de la Santé de la République Démocratique du Congo",
+    metadataBase: new URL("https://sante.gouv.cd"),
     openGraph: {
       title: article.title,
       description: "Article du Ministère de la Santé de la République Démocratique du Congo",
@@ -45,7 +46,6 @@ export async function generateMetadata(
       }] : [],
       url: `https://sante.gouv.cd/actualites/${slug}`,
       type: "article",
-      publishedTime: article.date,
       authors: ["Ministère de la Santé de la République Démocratique du Congo"],
     },
     twitter: {
