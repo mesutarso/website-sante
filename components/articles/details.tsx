@@ -3,12 +3,15 @@ import { useRef } from "react"
 import { Section, Container } from "@/components/craft"
 import Image from "next/image"
 import { motion, useInView } from "motion/react"
+import CardArticle from "@/components/articles/Card"
+import ShareButtons from "@/components/shared/share-buttons"
 
 type DetailsArticlesProps = {
-    article: any
+    article: any,
+    url: string
 }
 
-function DetailsArticles({ article }: DetailsArticlesProps) {
+function DetailsArticles({ article, url }: DetailsArticlesProps) {
     const dateRef = useRef(null)
     const titleRef = useRef(null)
     const descriptionRef = useRef(null)
@@ -39,7 +42,7 @@ function DetailsArticles({ article }: DetailsArticlesProps) {
                             {article?.date}
                         </motion.div>
 
-                        {/* Title and subtitle */}
+
                         <motion.h1
                             ref={titleRef}
                             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +68,7 @@ function DetailsArticles({ article }: DetailsArticlesProps) {
                 <Section>
                     <Container className="relative -top-44 z-10">
                         <div className="flex flex-col md:flex-row gap-8">
-                            {/* Image */}
+
                             <motion.div
                                 ref={imageRef}
                                 initial={{ opacity: 0, x: -20 }}
@@ -97,6 +100,10 @@ function DetailsArticles({ article }: DetailsArticlesProps) {
                                     <h2 className="font-bold mb-2">Date de publication</h2>
                                     <p>{article?.date}</p>
                                     <h2 className="font-bold mt-4 mb-2">Cellule Communication</h2>
+                                    <div className="flex items-center gap-2">
+                                        <p className="text-sm font-bold">Partager : </p>
+                                        <ShareButtons title={article?.title} url={url} />
+                                    </div>
                                 </div>
                             </motion.div>
                         </div>
@@ -114,6 +121,14 @@ function DetailsArticles({ article }: DetailsArticlesProps) {
                     </Container>
                 </Section>
             </div>
+            <Container className="my-12">
+                <h2 className="text-2xl font-bold mb-4">Articles similaires</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+                    {article?.similarsPosts.map((post: any) => (
+                        <CardArticle key={post.id} {...post} slug={post.link} />
+                    ))}
+                </div>
+            </Container>
         </div>
     )
 }

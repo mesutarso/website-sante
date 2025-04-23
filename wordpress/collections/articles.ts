@@ -21,9 +21,12 @@ export async function getLastestArticles() {
 }
 
 export async function getArticleBySlug(slug: string) {
-  const { post } = await fetchGraphql(GET_ARTICLE_BY_SLUG, { slug });
+  const { post } = await fetchGraphql(GET_ARTICLE_BY_SLUG, {
+    id: slug,
+  });
   return {
     title: post.title,
+    slug: post.slug,
     date: format(new Date(post.date), "dd MMMM yyyy", { locale: fr }),
     image: post.featuredImage?.node?.sourceUrl,
     description: post?.excerpt,
@@ -42,7 +45,7 @@ export async function getArticleBySlug(slug: string) {
             link: edge.node.slug,
           };
         })
-        .filter((item: any) => item.id !== post.id) || [],
+        .filter((item: any) => item.title !== post.title) || [],
   };
 }
 

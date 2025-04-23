@@ -35,8 +35,8 @@ export const GET_LASTEST_ARTICLES = `query getLastPosts {
 }`;
 
 export const GET_ARTICLE_BY_SLUG = `
-query getPostBySlug {
-  post(id: "", idType: SLUG) {
+query getPostBySlug($id: ID!) {
+  post(id: $id, idType: SLUG) {
     title
     excerpt
     date

@@ -24,7 +24,7 @@ const CardArticle: React.FC<ArticleProps> = ({ image, title, date, slug }) => {
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.2 }}
     >
-      <Card className="border-none shadow-none p-0 h-full">
+      <Card className="border-none shadow p-0 h-full">
         <Link href={`/actualites/${slug}`}>
           <CardHeader className="relative p-0">
             <Image

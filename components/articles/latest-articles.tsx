@@ -36,7 +36,7 @@ export default function LatestArticles() {
                         title={article.title}
                         date={article.date}
                         image={article?.image || "/images/prevoyance.jpeg"}
-                        slug={article.link}
+                        slug={article.slug}
                     />
                 ))
             }

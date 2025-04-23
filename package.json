@@ -31,6 +31,7 @@
     "lucide-react": "^0.485.0",
     "motion": "^12.6.2",
     "next": "15.2.4",
+    "next-share": "^0.27.0",
     "next-view-transitions": "^0.3.4",
     "plaiceholder": "^3.0.0",
     "query-string": "^9.1.1",
