@@ -23,7 +23,6 @@ export async function generateMetadata(
     };
   }
 
-  const previousImages = (await parent).openGraph?.images || [];
 
   return {
     title: article.title,
@@ -31,11 +30,18 @@ export async function generateMetadata(
     openGraph: {
       title: article.title,
       description: article.description || "Article du Ministère de la Santé de la République Démocratique du Congo",
-      images: article.image ? [article.image, ...previousImages] : previousImages,
+      images: article.image ? [article.image] : [],
       url: `https://sante.gouv.cd/actualites/${slug}`,
       type: "article",
       publishedTime: article.date,
       authors: ["Ministère de la Santé de la RDC"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description || "Article du Ministère de la Santé de la République Démocratique du Congo",
+      images: article.image ? [article.image] : [],
+
     },
   };
 }

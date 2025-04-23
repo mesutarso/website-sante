@@ -459,3 +459,20 @@ export async function getSimplePosts(filterParams?: {
     id: post.id,
   }));
 }
+
+export async function getAllArticlesSlugs() {
+  const url = getUrl("/wp-json/wp/v2/posts", {
+    per_page: 100,
+  });
+  const response = await wordpressFetch<Post[]>(url, {
+    next: {
+      ...defaultFetchOptions.next,
+      tags: ["wordpress", "articles"],
+    },
+  });
+
+  return response.map((post) => ({
+    slug: post.slug,
+    date: post.date,
+  }));
+}
