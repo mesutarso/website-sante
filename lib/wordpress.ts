@@ -476,3 +476,22 @@ export async function getAllArticlesSlugs() {
     date: post.date,
   }));
 }
+
+export async function getArticleBySlug(slug: string) {
+  const url = getUrl("/wp-json/wp/v2/posts", { slug });
+  const response = await wordpressFetch<Post>(url, {
+    next: {
+      ...defaultFetchOptions.next,
+      tags: ["wordpress", "article"],
+    },
+  });
+
+  return {
+    image:
+      (response as any)._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+      null,
+    title: response.title.rendered,
+    slug: response.slug,
+    id: response.id,
+  };
+}

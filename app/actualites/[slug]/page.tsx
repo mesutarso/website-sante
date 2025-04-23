@@ -30,17 +30,29 @@ export async function generateMetadata(
     openGraph: {
       title: article.title,
       description: article.description || "Article du Ministère de la Santé de la République Démocratique du Congo",
-      images: article.image ? [article.image] : [],
+      images: article.image ? [{
+        url: article.image,
+        width: 1200,
+        height: 630,
+        alt: article.title,
+        type: "image/png",
+      }] : [],
       url: `https://sante.gouv.cd/actualites/${slug}`,
       type: "article",
       publishedTime: article.date,
-      authors: ["Ministère de la Santé de la RDC"],
+      authors: ["Ministère de la Santé de la République Démocratique du Congo"],
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: article.description || "Article du Ministère de la Santé de la République Démocratique du Congo",
-      images: article.image ? [article.image] : [],
+      images: article.image ? [{
+        url: article.image,
+        width: 1200,
+        height: 630,
+        alt: article.title,
+        type: "image/png",
+      }] : [],
 
     },
   };
