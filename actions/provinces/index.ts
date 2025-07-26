@@ -3,7 +3,7 @@ import { getCollection } from "@/lib/strapi";
 
 // Liste complète des 26 provinces de la RDC
 // Cette liste est basée sur la division administrative officielle de la RDC
-export const PROVINCES_RDC = [
+const PROVINCES_RDC = [
   { id: 1, name: "Kongo-Central" },
   { id: 2, name: "Bas-Uele" },
   { id: 3, name: "Équateur" },
@@ -32,7 +32,6 @@ export const PROVINCES_RDC = [
   { id: 26, name: "Lualaba" },
 ];
 
-// Récupère les provinces depuis Strapi
 export const getProvinces = async () => {
   const { data: provinces } = await getCollection("provinces", {
     fields: ["documentId", "nom"],
@@ -44,22 +43,26 @@ export const getProvinces = async () => {
 };
 
 // Fonction pour obtenir la liste statique des provinces (pour les select, etc.)
-export const getStaticProvinces = () => {
-  return PROVINCES_RDC.map((province) => ({
-    label: province.name,
-    value: province.id.toString(),
-    id: province.id,
-  }));
+export const getStaticProvinces = async () => {
+  return Promise.resolve(
+    PROVINCES_RDC.map((province) => ({
+      label: province.name,
+      value: province.id.toString(),
+      id: province.id,
+    }))
+  );
 };
 
 // Fonction utilitaire pour trouver une province par nom
-export const findProvinceByName = (name: string) => {
-  return PROVINCES_RDC.find(
-    (province) => province.name.toLowerCase() === name.toLowerCase()
+export const findProvinceByName = async (name: string) => {
+  return Promise.resolve(
+    PROVINCES_RDC.find(
+      (province) => province.name.toLowerCase() === name.toLowerCase()
+    )
   );
 };
 
 // Fonction utilitaire pour obtenir les noms des provinces uniquement
-export const getProvinceNames = () => {
-  return PROVINCES_RDC.map((province) => province.name);
+export const getProvinceNames = async () => {
+  return Promise.resolve(PROVINCES_RDC.map((province) => province.name));
 };

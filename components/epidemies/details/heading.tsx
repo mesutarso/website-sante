@@ -16,7 +16,7 @@ function Heading({ id }: HeadingProps) {
         return <Skeleton className="h-12 w-3/4 mb-12" />
     }
     return (
-        <h1 className="text-5xl text-blue font-bold mb-12">Surveillance Épidémiologique : {epidemie || ''}</h1>
+        <h1 className="text-2xl text-center md:text-left md:text-5xl text-blue font-bold mb-12">Surveillance Épidémiologique : {epidemie || ''}</h1>
     )
 }
 

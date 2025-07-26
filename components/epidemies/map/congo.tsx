@@ -5,7 +5,35 @@ import Tooltip from "./tooltip";
 import { Button } from "@/components/ui/button";
 import { Dot } from "lucide-react";
 import { useRouter } from 'next/navigation';
-import { PROVINCES_RDC } from "@/actions/provinces";
+
+const PROVINCES_RDC = [
+    { id: 1, name: "Kongo-Central" },
+    { id: 2, name: "Bas-Uele" },
+    { id: 3, name: "Équateur" },
+    { id: 4, name: "Haut-Katanga" },
+    { id: 5, name: "Haut-Lomami" },
+    { id: 6, name: "Haut-Uele" },
+    { id: 7, name: "Ituri" },
+    { id: 8, name: "Kasaï" },
+    { id: 9, name: "Kasaï-Central" },
+    { id: 10, name: "Kasaï-Oriental" },
+    { id: 11, name: "Kinshasa" },
+    { id: 12, name: "Kwango" },
+    { id: 13, name: "Kwilu" },
+    { id: 14, name: "Lomami" },
+    { id: 15, name: "Mai-Ndombe" },
+    { id: 16, name: "Maniema" },
+    { id: 17, name: "Mongala" },
+    { id: 18, name: "Nord-Kivu" },
+    { id: 19, name: "Nord-Ubangi" },
+    { id: 20, name: "Sankuru" },
+    { id: 21, name: "Sud-Kivu" },
+    { id: 22, name: "Sud-Ubangi" },
+    { id: 23, name: "Tanganyika" },
+    { id: 24, name: "Tshopo" },
+    { id: 25, name: "Tshuapa" },
+    { id: 26, name: "Lualaba" },
+];
 
 type Props = {
     indicateurs: any;
@@ -122,9 +150,8 @@ function CongoMap({ indicateurs }: Props) {
     return (
         <div>
             <Card className="map">
-                <div className='p-5 rounded-md relative my-8 min-h-[380px] bg-light-gray dark:bg-dark-violet'>
+                <div className='p-5 rounded-md relative my-8 min-h-[450px] md:min-h-[400px] bg-light-gray dark:bg-dark-violet'>
                     <div className='text-xl font-bold mb-5 flex items-center justify-between'>
-                        <h2 dangerouslySetInnerHTML={{ __html: homeTranslations.fr.repartionParProvince }} />
                         <div className='flex items-center gap-2'>
                             <p>{title}</p>
                             <Button className='bg-[#EBEBEB] hover:bg-[#EBEBEB] dark:bg-[#2D2D3D] dark:hover:bg-[#2D2D3D] w-[100px] h-[30px] rounded-md'>
@@ -136,7 +163,7 @@ function CongoMap({ indicateurs }: Props) {
                     </div>
 
 
-                    <div className="legend absolute bottom-[10px] left-5 space-y-2 flex flex-col justify-start">
+                    <div className="legend absolute bottom-[-40px] left-5 space-y-2 flex flex-col justify-start">
                         <div className="mb-2">
                             <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                                 {homeTranslations.fr.legendTitle}
