@@ -6,6 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-dark-violet: var(--dark-violet);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -65,6 +66,7 @@
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
+  --dark-violet: #242635;
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
   --accent: oklch(0.967 0.001 286.375);
@@ -129,6 +131,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  
 }
 
 
@@ -163,3 +166,18 @@ h1{
     font-size: 3.5rem;
   }
 }
+
+.fill {
+  @apply stroke-[#000] stroke-[1.37] fill-[#fff] dark:fill-[#323547]  hover:fill-black dark:hover:fill-white hover:stroke-[1.37];
+
+}
+
+.fill-active {
+  @apply fill-dark-violet stroke-[1.37] stroke-[#E9E9E9] dark:fill-[#ffff]  hover:fill-black hover:stroke-[1.37];
+}
+
+.circle-stroke {
+  stroke-opacity: 0.19;
+  
+}
+
