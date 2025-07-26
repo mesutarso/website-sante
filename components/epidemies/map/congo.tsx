@@ -41,11 +41,13 @@ type Props = {
 
 function CongoMap({ indicateurs }: Props) {
     const router = useRouter();
-    const [title, setTitle] = useState<string>("");
+    const [title, setTitle] = useState<string>("Toutes les provinces");
 
     const handleTitle = useCallback((province: string) => {
         setTitle(province);
     }, []);
+
+
 
 
     const legendThresholds = useMemo(() => {
@@ -147,20 +149,22 @@ function CongoMap({ indicateurs }: Props) {
         },
     };
 
+    const total_cas = indicateurs?.reduce((acc: number, curr: any) => acc + curr.cas, 0) || 0;
+
     return (
         <div>
-            <Card className="map">
-                <div className='p-5 rounded-md relative my-8 min-h-[450px] md:min-h-[400px] bg-light-gray dark:bg-dark-violet'>
-                    <div className='text-xl font-bold mb-5 flex items-center justify-between'>
-                        <div className='flex items-center gap-2'>
-                            <p>{title}</p>
-                            <Button className='bg-[#EBEBEB] hover:bg-[#EBEBEB] dark:bg-[#2D2D3D] dark:hover:bg-[#2D2D3D] w-[100px] h-[30px] rounded-md'>
-                                <span className="text-center text-black dark:text-white">
-                                    {getProvinceData(title)?.cas || 0} {homeTranslations.fr.cas}
-                                </span>
-                            </Button>
-                        </div>
+            <Card className="map py-3 pb-8">
+                <div className='px-5 rounded-md relative my-8 min-h-[450px] md:min-h-[400px] bg-light-gray dark:bg-dark-violet w-full'>
+
+                    <div className='flex justify-between items-center gap-2'>
+                        <p></p>
+                        <Button className='bg-[#EBEBEB] hover:bg-[#EBEBEB] dark:bg-[#2D2D3D] dark:hover:bg-[#2D2D3D] w-[100px] h-[30px] rounded-md'>
+                            <span className="text-center text-black dark:text-white">
+                                {getProvinceData(title)?.cas || total_cas} {homeTranslations.fr.cas}
+                            </span>
+                        </Button>
                     </div>
+
 
 
                     <div className="legend absolute bottom-[-40px] left-5 space-y-2 flex flex-col justify-start">

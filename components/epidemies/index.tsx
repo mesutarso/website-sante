@@ -11,6 +11,7 @@ import { Button } from "../ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { ArrowLeftIcon, FilterIcon, XIcon } from "lucide-react"
 import { Badge } from "../ui/badge"
+import { useRouter } from "next/navigation"
 
 type DashboardEpidemieProps = {
     id: string;
@@ -20,6 +21,7 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
     const [selectedWeek, setSelectedWeek] = useState<number>(26);
     const [selectedProvince, setSelectedProvince] = useState<string>("all");
     const [showFilters, setShowFilters] = useState<boolean>(false);
+    const router = useRouter();
 
     const { data: provinces } = useQuery({
         queryKey: ["provinces"],
@@ -50,7 +52,7 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
         <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div className="flex items-center gap-4">
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" onClick={() => router.back()}>
                         <ArrowLeftIcon className="w-4 h-4" />
                     </Button>
                     <div>
@@ -176,7 +178,7 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
             </div>
 
 
-            {/* Contenu principal */}
+
             {isLoading ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div className="space-y-4">
@@ -193,7 +195,7 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
                 </div>
             ) : (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {/* Colonne gauche: Carte et commentaires */}
+
                     <div className="space-y-4">
                         <div className="bg-card rounded-lg border p-4">
                             <CongoMap indicateurs={rapports} />
@@ -203,6 +205,9 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
                                 indicateurs={rapports || []}
                                 total_cas={totalCas}
                                 total_deces={totalDeces}
+                                selectedWeek={selectedWeek}
+                                selectedProvince={selectedProvince}
+                                provinceLabel={provinces?.find(p => p.value === selectedProvince)?.label}
                             />
                         </div>
                     </div>
