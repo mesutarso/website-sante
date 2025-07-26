@@ -9,11 +9,11 @@ type Props = {
   }>;
 };
 
-export async function generateStaticParams() {
-  const slugs = await getAllArticlesSlugs();
+// export async function generateStaticParams() {
+//   const slugs = await getAllArticlesSlugs();
 
-  return slugs.map(({ slug }) => slug);
-}
+//   return slugs.map(({ slug }) => slug);
+// }
 
 export async function generateMetadata(
   { params }: Props,
