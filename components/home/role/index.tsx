@@ -33,14 +33,14 @@ export default function Role() {
   ]
 
   return (
-    <div ref={ref} className="min-h-screen bg-blue py-12 px-4 sm:px-6 lg:px-8">
+    <div ref={ref} className=" bg-blue py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-7xl mx-auto"
       >
-        <div className="text-center mb-12 mt-20">
+        <div className="text-center mb-10">
           <motion.h2
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -66,10 +66,10 @@ export default function Role() {
           className="prose prose-lg text-white mx-auto mb-16 text-center max-w-3xl"
         >
           <p className="text-sm">
-            Le Ministère de la Santé Publique, Hygiène et Préventions, est chargé d'élaborer et mettre en œuvre des
+            Le Ministère de la Santé Publique, Hygiène et Préventions, est chargé d&apos;élaborer et mettre en œuvre des
             politiques, des plans et des stratégies en matière de santé, conformément aux orientations du gouvernement.
-            À ce titre, et en liaison avec les différents départements ministériels concernés, il a l'initiative et la
-            responsabilité des actions suivantes :
+            À ce titre, et en liaison avec les différents départements ministériels concernés, il a l&apos;initiative et la
+            responsabilité des actions suivantes
           </p>
         </motion.div>
 
@@ -124,19 +124,6 @@ export default function Role() {
                 </CardContent>
               </Card>
             </motion.div>
-          ))}
-        </div>
-
-        <div className="flex justify-center mt-12 space-x-2">
-          {[1, 2, 3].map((dot) => (
-            <motion.div
-              key={dot}
-              className="h-2.5 w-2.5 rounded-full bg-blue-800"
-              initial={{ opacity: 0.3 }}
-              animate={isInView ? { opacity: dot === 2 ? 1 : 0.3 } : { opacity: 0.3 }}
-              whileHover={{ scale: 1.2, opacity: 1 }}
-              transition={{ duration: 0.2 }}
-            />
           ))}
         </div>
       </motion.div>

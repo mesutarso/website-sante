@@ -33,7 +33,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
             alt={name}
             layout="fill"
             objectFit="cover"
-            className="rounded-xl"
+            className="rounded-xl"  
           />
         )}
       </div>

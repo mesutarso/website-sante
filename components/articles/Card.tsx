@@ -21,12 +21,12 @@ interface ArticleProps {
 const CardArticle: React.FC<ArticleProps> = ({ image, title, date, slug }) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.20 }}
       transition={{ duration: 0.2 }}
     >
       <Card className="border-none shadow p-0 h-full max-h-full">
         <Link href={`/actualites/${slug}`}>
-          <CardHeader className="relative p-0">
+          <CardHeader className=" p-0">
             <Image
               src={image || "/images/prevoyance.jpeg"}
               alt={`image de l'article: ${title}`}
@@ -37,7 +37,7 @@ const CardArticle: React.FC<ArticleProps> = ({ image, title, date, slug }) => {
           </CardHeader>
           <CardContent className="p-3">
             <span className="text-xs text-white bg-blue mb-2 py-1 px-3 rounded-lg">{date}</span>
-            <h2 className="text-md font-semi-bold mb-1 mt-4 line-clamp-3">{title}</h2>
+            <h2 className="text-md font-semi-bold mb-1 mt-2 line-clamp-2">{title}</h2>
           </CardContent>
         </Link>
       </Card>

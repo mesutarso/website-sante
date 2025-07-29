@@ -42,6 +42,18 @@ const categories: CooperationCategory[] = [
     desc: "L'Agence Nationale de l'Ingénierie Clinique, de l'Information et de l'Informatique de la Santé (ANICNS) est une structure spécialisée dans l'optimisation des infrastructures hospitalières et l'innovation technologique dans le secteur de la santé. Elle assure la modernisation des équipements médicaux, le développement des systèmes d'information sanitaire et la digitalisation des services de santé pour améliorer l'efficacité et la qualité des soins en RDC.",
     color: "bg-blueSky",
   },
+  {
+    title: "ANAMED ",
+    def: "Agence Nationale des Médicaments Essentiels et des Produits de Santé.",
+    desc: "Garantit la disponibilité, la qualité et la distribution des médicaments essentiels en RDC.",
+    color: "bg-blue",
+  },
+  {
+    title: "ACOREP",
+    def: "Autorité Congolaise de Régulation Pharmaceutique",
+    desc: "Veille à la qualité, à la sécurité et à l’efficacité des médicaments sur tout le territoire national.",
+    color: "bg-green",
+  },
 ];
 
 export default function CooperationGrid() {
@@ -83,75 +95,30 @@ export default function CooperationGrid() {
             Organe de mise en oeuvres de la Couverture Santé Universselle
           </motion.h1>
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-12"
+            className="grid grid-cols-1 md:grid-cols-4 gap-6"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            <motion.div
-              variants={itemVariants}
-              className={`${categories[0].color} p-6 rounded-3xl flex flex-col justify-between col-span-1 md:col-span-2 min-h-[350px]`}
-            >
-              <CircleArrowRight
-                className="text-white w-10 h-10"
-                aria-hidden="true"
-                strokeWidth={0.5}
-              />
-              <h2 className="text-white text-xl font-bold mt-auto">
-                {categories[0].title.split(" ").map((word, i) => (
-                  <span key={i} className="block font-rocgrotesk text-5xl">
-                    {word}
-                  </span>
-                ))}
-              </h2>
-              <p className="text-white font-bold text-xl mb-6">
-                {categories[0].def}
-              </p>
-              <br />
-              <p className="text-white text-sm line-clamp-4">{categories[0].desc}</p>
-            </motion.div>
-            <motion.div
-              variants={itemVariants}
-              className={`${categories[1].color} p-6 rounded-3xl flex flex-col justify-between min-h-[350px]`}
-            >
-              <CircleArrowRight
-                className="text-white w-10 h-10 "
-                aria-hidden="true"
-                strokeWidth={0.5}
-              />
-              <h2 className="text-white text-xl font-bold mt-auto">
-                {categories[1].title.split(" ").map((word, i) => (
-                  <span key={i} className="block font-rocgrotesk text-5xl">
-                    {word}
-                  </span>
-                ))}
-              </h2>
-
-              <p className="text-white font-bold text-xl mb-6">
-                {categories[1].def}
-              </p>
-              <br />
-              <p className="text-white text-sm line-clamp-4">{categories[1].desc}</p>
-            </motion.div>
-            {categories.slice(2).map((category, index) => (
+            {categories.map((category, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`${category.color} p-6 rounded-3xl flex flex-col justify-between min-h-[350px]`}
+                className={`${category.color} p-6 rounded-3xl flex flex-col justify-between min-h-[300px]`}
               >
                 <CircleArrowRight
                   className="text-white w-10 h-10 "
                   aria-hidden="true"
                   strokeWidth={0.5}
                 />
-                <h2 className="text-white text-xl font-bold mt-auto">
+                <h2 className="text-white font-bold mt-auto">
                   {category.title.split(" ").map((word, i) => (
-                    <span key={i} className="block font-rocgrotesk text-5xl">
+                    <span key={i} className="block font-rocgrotesk text-2xl">
                       {word}
                     </span>
                   ))}
                 </h2>
-                <p className="text-white font-bold text-xl mb-6">
+                <p className="text-white font-bold text-md mb-6">
                   {category.def}
                 </p>
                 <br />

@@ -1,5 +1,5 @@
 "use client";
-import { Container, Section } from "@/components/craft";
+import { Container } from "@/components/craft";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion, useInView } from "motion/react";
@@ -13,7 +13,7 @@ function DoubleCards() {
   const isInView2 = useInView(ref2, { once: true });
 
   return (
-    <Section className="text-white">
+    <div className="text-white  border-1 border-t border-t-[#cfcfcf] border-y-none">
       <Container className="flex flex-col lg:flex-row w-full">
         <motion.div
           ref={ref1}
@@ -22,7 +22,7 @@ function DoubleCards() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="bg-blueSky p-16 w-full lg:w-1/2 rounded-t-3xl lg:rounded-tr-none lg:rounded-l-3xl space-y-12"
         >
-          <h2 className="text-3xl lg:text-5xl font-bold uppercase">Prévoyance Sociale</h2>
+          <h2 className="text-xl lg:text-3xl font-bold uppercase mb-2">Prévoyance Sociale</h2>
           <p className="max-w-md">
             La Prévoyance Sociale est un pilier essentiel du Ministère de la
             Santé Publique, Hygiène et Prévoyance Sociale, visant à garantir la
@@ -33,7 +33,7 @@ function DoubleCards() {
           <Link href="/prevoyance-sociale">
             <Button
               variant={"outline"}
-              className="mt-8 bg-transparent flex items-center gap-4"
+              className="mt-4 bg-transparent flex items-center gap-4"
             >
               <span>En savoir plus</span> <ArrowRight />
             </Button>
@@ -46,7 +46,7 @@ function DoubleCards() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-green p-16 w-full md:w-1/2 rounded-b-3xl lg:rounded-bl-none lg:rounded-r-3xl space-y-12"
         >
-          <h2 className="text-3xl lg:text-5xl font-bold uppercase">
+          <h2 className="text-xl lg:text-3xl font-bold uppercase mb-2">
             Hygiène
           </h2>
           <p className="max-w-md">
@@ -58,14 +58,14 @@ function DoubleCards() {
           <Link href="/hygene" className="pointer"> 
             <Button
                 variant={"outline"}
-                className="mt-8 bg-transparent flex items-center gap-4"
+                className="mt-4 bg-transparent flex items-center gap-4"
             >
                 <span>En savoir plus</span> <ArrowRight />
             </Button>
           </Link>
         </motion.div>
       </Container>
-    </Section>
+    </div>
   );
 }
 

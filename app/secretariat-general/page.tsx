@@ -285,18 +285,10 @@ export default function SecretariatGeneralPage() {
               </motion.span>
             </motion.h1>
 
-            <AnimatedText
-              text="Le Secrétariat Général à la Santé, planjfie, coordonne et supervise les activités en appui au Ministère de la Santé qui en fixe les orientations générales. Cadre de liaison entre le Cabinet, l'Administration de la Santé et les partenaires, il coordonne la direction des services décentralisés en tenant compte des orientations politiques et budgétaires tracées par le Ministère."
-              delay={0.5}
-              className="max-w-4xl mx-auto text-center mb-10 text-blue text-lg leading-relaxed"
-            />
-
-            <AnimatedText
-              text="Les fonctions de Secrétaire général sont exercées par le Dr. Sylvain Yuma Ramazani. Il a dirigé le Programme national de transfusion sanguine de 2006 à 2016 avant de devenir Directeur de Cabinet au Ministère de la Santé de 2016 à 2018. Docteur en médecine, chirurgie et accouchement de l'Université de Kinshasa en 1998, il a obtenu un Diplôme d'Etudes Spécialisées en Immuno-hematologie et Transfusion de l'Université de Liège en Belgique en 2005 avant de décrocher, trois ans plus tard, un Master en Santé Publique à l'Université de Kinshasa."
-              delay={0.8}
-              className="max-w-4xl mx-auto text-center text-blue text-lg leading-relaxed"
-            />
-
+            <p className="max-w-4xl mx-auto text-center mb-10 text-blue text-lg ">
+              Le Secrétariat Général à la Santé planifie, coordonne et supervise les activités en appui au Ministère de la Santé, qui définit les orientations générales. Il constitue le cadre de liaison entre le Cabinet, l’Administration de la Santé et les partenaires. Il coordonne également la direction des services décentralisés, en tenant compte des orientations politiques et budgétaires définies par le Ministère.
+            </p>
+     
             <AnimatedSection delay={1.2}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-12">
                 <a

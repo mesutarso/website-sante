@@ -20,7 +20,7 @@ const fadeIn = {
 };
 
 const EventCard: React.FC<any> = ({
-  color,
+  img,
   title,
   location,
   date,
@@ -40,8 +40,7 @@ const EventCard: React.FC<any> = ({
     phone: "",
   });
 
-  const bgColor = color === "pink" ? "bg-pink-200" : "bg-[#1a2f4b]";
-  const textColor = color === "pink" ? "text-pink-500" : "text-white";
+ 
 
   const validateForm = () => {
     const newErrors = {
@@ -102,62 +101,73 @@ const EventCard: React.FC<any> = ({
   return (
     <>
       <motion.div
-        className="bg-white rounded-lg p-6 flex flex-wrap items-center space-x-4 space-y-4 h-full"
+        className="bg-white rounded-lg p-3 flex flex-wrap items-center space-x-4 space-y-4 h-full relative overflow-hidden"
+        style={{
+          backgroundImage: img ? `url(${img})` : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
         initial="initial"
         animate="animate"
         variants={fadeInUp}
       >
-        <motion.div
-          className={`${bgColor} w-12 h-12 rounded-full flex-shrink-0`}
-          variants={fadeIn}
-        ></motion.div>
-        <div className="space-y-4">
-          <motion.div
-            className="flex-grow w-full md:w-[50%]"
-            variants={fadeInUp}
-          >
-            <h2 className="text-lg font-bold text-[#1a2f4b] leading-tight">
-              {title}
-            </h2>
-          </motion.div>
-          <motion.p
-            className="text-[#1a2f4b] underline"
-            variants={fadeInUp}
-          >
-            {location}
-          </motion.p>
+        {img && (
+          <div className="absolute inset-0 bg-black/40 w-full h-full"></div>
+        )}
 
-        </div>
-
-        <motion.div
-          className="flex flex-col md:items-end space-y-2"
-          variants={fadeInUp}
-        >
-          <motion.div
-            className={`${bgColor} ${textColor} text-[10px] font-semibold px-3 text-center py-2 rounded w-[150px]`}
-            variants={fadeIn}
-          >
-            {date}
-          </motion.div>
-
-          <motion.div variants={fadeInUp}>
-            <Button
-              variant={"outline"}
-              className="mt-8 bg-transparent shadow-none flex w-full md:items-center  gap-4 text-[11px] border-blue"
-              onClick={() => setIsOpen(true)}
+        <div className="relative z-10 w-full">
+          <div className="space-y-2 w-full">
+            <motion.div
+              className="flex-grow"
+              variants={fadeInUp}
             >
-              <span>S&apos;inscrire</span> <ArrowRight />
-            </Button>
+              <h2 className={`text-lg font-bold leading-tight ${img ? 'text-white' : 'text-[#1a2f4b]'}`}>
+                {title}
+              </h2>
+            </motion.div>
+            <motion.p
+              className={`underline mb-2 ${img ? 'text-gray-200' : 'text-[#1a2f4b]'}`}
+              variants={fadeInUp}
+            >
+              {location}
+            </motion.p>
+          </div>
+
+          <motion.div
+            className="space-y-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4"
+            variants={fadeInUp}
+          >
+            <motion.div
+              className={`bg-blue text-white text-[10px] font-semibold px-3 text-center py-2 rounded`}
+              variants={fadeIn}
+            >
+              {date}
+            </motion.div>
+
+            <motion.div variants={fadeInUp}>
+              <Button
+                variant={"outline"}
+                className={`shadow-none flex w-full md:items-center gap-4 text-[11px] ${
+                  img 
+                    ? 'bg-white/20 hover:bg-white/30 text-white border-white/30 hover:border-white/50' 
+                    : 'bg-transparent border-blue'
+                }`}
+                onClick={() => setIsOpen(true)}
+              >
+                <span>S&apos;inscrire</span> <ArrowRight />
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </motion.div>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Inscription à l'événement</DialogTitle>
+            <DialogTitle>Inscription à l&apos;événement</DialogTitle>
             <DialogDescription>
-              Remplissez le formulaire ci-dessous pour vous inscrire à l'événement.
+              Remplissez le formulaire ci-dessous pour vous inscrire à l&apos;événement.
             </DialogDescription>
           </DialogHeader>
           {showSuccess ? (
@@ -179,7 +189,7 @@ const EventCard: React.FC<any> = ({
               transition={{ duration: 0.3 }}
             >
               <div className="space-y-2">
-                <Label htmlFor="eventName">Nom de l'événement</Label>
+                <Label htmlFor="eventName">Nom de l&apos;événement</Label>
                 <Input
                   id="eventName"
                   name="eventName"

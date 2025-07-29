@@ -53,6 +53,10 @@ export const MENU = [
     name: "Contact",
     href: "/contact",
   },
+  {
+    name: "Epidémiologie",   
+    href: "/epidemie",
+  },
 ];
 
 export const USEFULS_LINKS = [
@@ -83,28 +87,20 @@ export const UTILES_LINKS = [
     href: "/#",
   },
   {
-    name: "FSS",
-    href: "/#",
-  },
-  {
     name: "INSP",
-    href: "/institutions",
+    href: "https://www.insp.cd",
   },
   {
-    name: "AR-CSU",
-    href: "/#",
+    name: "CNSU",
+    href: "https://www.cncsurdc.com/",
   },
   {
     name: "ANICIIS",
-    href: "/#",
+    href: "https://anicns.gouv.cd/",
   },
   {
     name: "OMS",
-    href: "/#",
-  },
-  {
-    name: "OIT",
-    href: "/#",
+    href: "https://www.who.int/fr",
   },
 ];
 

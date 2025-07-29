@@ -3,36 +3,51 @@ export interface Event {
   location: string;
   date: string;
   inscriptionLink: string;
-  color: string;
+  img: string;
 }
 
 export const events: Event[] = [
   {
-    title: "Journée mondiale de sensibilisation à l'autisme",
+    title: "Journée mondiale de la physiothérapie",
     location: "À définir",
-    date: "2 avril 2024",
+    date: "8 septembre 2025",
     inscriptionLink: "https://forms.gle/example1",
-    color: "pink",
+    img: "/images/events/physiotherapie_cerveau.jpg",
   },
   {
-    title: "Journée mondiale de la voix",
+    title: "Journée mondiale de prévention du suicide",
     location: "À définir",
-    date: "16 avril 2024",
+    date: "10 septembre 2025",
     inscriptionLink: "https://forms.gle/example2",
-    color: "blue",
+    img: "/images/events/suicide.jpg",
   },
   {
-    title: "Journée mondiale sur la sécurité et la santé au travail",
+    title: "Journée mondiale des premiers secours",
     location: "À définir",
-    date: "28 avril 2024",
+    date: "14 septembre 2025",
     inscriptionLink: "https://forms.gle/example3",
-    color: "blue",
+    img: "/images/events/secourisme.webp",
   },
   {
-    title: "Journée mondiale de l'asthme",
+    title: "Journée mondiale de la maladie d’Alzheimer",
     location: "À définir",
-    date: "6 mai 2024",
+    date: "21 septembre 2025",
     inscriptionLink: "https://forms.gle/example4",
-    color: "blue",
+    img: "/images/events/alzheimer.jpg",
   },
+  {
+    title: "Journée mondiale de la sensibilisation à la leucémie chronique",
+    location: "À définir",
+    date: "22 septembre 2025",
+    inscriptionLink: "https://forms.gle/example3",
+    img: "/images/events/leucemie.jpg",
+  },
+  { 
+    title: "Journée mondiale de la contraception",
+    location: "À définir",
+    date: "26 septembre 2025",
+    inscriptionLink: "https://forms.gle/example1",
+    img: "/images/events/contraception.jpg",
+  },
+ 
 ];

@@ -10,7 +10,7 @@ import { getSimplePosts } from "@/lib/wordpress";
 export default function LatestArticles() {
     const { data, isLoading } = useQuery({
         queryKey: ['articles'],
-        queryFn: () => getSimplePosts({ per_page: 4 })
+        queryFn: () => getSimplePosts({ per_page: 5 })
     })
 
     if (isLoading) {
@@ -28,7 +28,7 @@ export default function LatestArticles() {
     }
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-4 ">
             {
                 data?.map((article: any) => (
                     <CardArticle
