@@ -487,11 +487,11 @@ export async function getArticleBySlug(slug: string) {
   });
 
   return {
+    title: response.title,
+    slug: response.slug,
+    id: response.id,
     image:
       (response as any)._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
       null,
-    title: response.title.rendered,
-    slug: response.slug,
-    id: response.id,
   };
 }

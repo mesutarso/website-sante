@@ -49,7 +49,7 @@ query getPostBySlug($id: ID!) {
       edges{
         node{
           name
-          posts(first:5){
+          posts(first:6){
             edges{
               node{
                 id
