@@ -98,7 +98,7 @@ async function EpidemiePage() {
 
             <Container>
                 
-                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Épidémiologique sous surveillance</h2>
+                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Épidémies sous surveillance</h2>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {epidemies && epidemies.length > 0 ? (
                         epidemies
