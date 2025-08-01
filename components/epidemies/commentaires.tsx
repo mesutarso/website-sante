@@ -26,7 +26,6 @@ function Commentaires({
         return a.province.localeCompare(b.province, 'fr', { sensitivity: 'base' });
     });
 
-    // Utiliser la semaine sélectionnée ou calculer la semaine courante
     const currentYear = new Date().getFullYear();
     const weekNumber = selectedWeek || (() => {
         const now = new Date();
@@ -35,15 +34,12 @@ function Commentaires({
         return Math.ceil((pastDaysOfYear + startOfYear.getDay() + 1) / 7);
     })();
 
-    // Vérifier si c'est une seule province ou plusieurs
-    // Si selectedProvince est défini et n'est pas "all", c'est une province spécifique
     const isFilteredByProvince = selectedProvince && selectedProvince !== "all";
     const uniqueProvinces = [...new Set(indicateursTries.map(i => i.province).filter(Boolean))];
     const isSingleProvince = isFilteredByProvince || uniqueProvinces.length === 1;
 
     const tauxLetaliteGlobal = total_cas > 0 ? (total_deces / total_cas) * 100 : 0;
 
-    // Obtenir le nom de la province pour l'affichage
     const getProvinceDisplayName = () => {
         if (isFilteredByProvince) {
             return provinceLabel || selectedProvince;
@@ -51,7 +47,6 @@ function Commentaires({
         return uniqueProvinces[0];
     };
 
-    // Commentaire pour une seule province
     const renderSingleProvinceComment = () => {
         const province = getProvinceDisplayName();
         const indicateur = indicateursTries[0] || { cas: 0, deces: 0 };
@@ -61,7 +56,6 @@ function Commentaires({
             ? `Données filtrées pour la province de ${province}`
             : `Analyse spécifique à la province de ${province}`;
 
-        // Analyse des zones de santé si disponibles
         const zonesSante = rapport_zs || [];
         const zonesAvecCas = zonesSante.filter(zs => zs.cas > 0);
         const zonesAvecDeces = zonesSante.filter(zs => zs.deces > 0);
@@ -81,7 +75,6 @@ function Commentaires({
                     et {indicateur.deces?.toLocaleString('fr-FR') || 0} décès, soit un taux de létalité de {tauxLetaliteProvince.toLocaleString('fr-FR', { maximumFractionDigits: 2 })}%.
                 </p>
 
-                {/* Section zones de santé */}
                 {zonesSante.length > 0 && (
                     <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                         <p className="font-semibold text-sm mb-2">🏥 Analyse par zones de santé :</p>
@@ -117,7 +110,6 @@ function Commentaires({
         );
     };
 
-    // Commentaire global pour plusieurs provinces
     const renderGlobalComment = () => {
         const maxCas = Math.max(...indicateursTries.map(i => i.cas || 0));
         const maxDeces = Math.max(...indicateursTries.map(i => i.deces || 0));

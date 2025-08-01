@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from "@tanstack/react-query"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { getWeekReportsByEpidemie } from "@/actions/rapports"
 import { getProvinces } from "@/actions/provinces"
 import CongoMap from "./map/congo"
@@ -29,24 +29,27 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
     });
 
     const { data: rapports, isLoading } = useQuery({
-        queryKey: ["rapports", id, selectedWeek, selectedProvince],
-        queryFn: () => getWeekReportsByEpidemie(id, {
-            semaine: selectedWeek,
-            province: selectedProvince === "all" ? undefined : selectedProvince
-        }),
+        queryKey: ["rapports", id, selectedWeek],
+        queryFn: () => getWeekReportsByEpidemie(id, { semaine: selectedWeek }),
     });
+
+    const filteredRapports = useMemo(() => {
+        if (!rapports) return [];
+        if (selectedProvince === "all") return rapports;
+        return rapports.filter(r => r.province_id === selectedProvince);
+    }, [rapports, selectedProvince]);
 
     const weekOptions = Array.from({ length: 52 }, (_, i) => i + 1);
 
-    const totalCas = rapports?.reduce((acc, curr) => acc + curr.cas, 0) || 0;
-    const totalDeces = rapports?.reduce((acc, curr) => acc + curr.deces, 0) || 0;
+    const totalCas = filteredRapports?.reduce((acc, curr) => acc + curr.cas, 0) || 0;
+    const totalDeces = filteredRapports?.reduce((acc, curr) => acc + curr.deces, 0) || 0;
 
     const clearFilters = () => {
-        setSelectedWeek(26);
+        setSelectedWeek(29);
         setSelectedProvince("all");
     };
 
-    const activeFiltersCount = (selectedWeek !== 26 ? 1 : 0) + (selectedProvince !== "all" ? 1 : 0);
+    const activeFiltersCount = (selectedWeek !== 29 ? 1 : 0) + (selectedProvince !== "all" ? 1 : 0);
 
     return (
         <div className="space-y-6">
@@ -198,18 +201,32 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
 
                     <div className="space-y-4">
                         <div className="bg-card rounded-lg border p-4">
-                            <CongoMap indicateurs={rapports} />
+                            <CongoMap
+                                indicateurs={filteredRapports}
+                                selectedProvince={selectedProvince}
+                                onProvinceSelect={(province) => {
+                                    if (province === "Toutes les provinces") {
+                                        setSelectedProvince("all");
+                                    } else {
+                                        // Trouver la valeur correspondante dans la liste des provinces
+                                        const provinceData = provinces?.find(p => p.label === province);
+                                        if (provinceData) {
+                                            setSelectedProvince(provinceData.value);
+                                        }
+                                    }
+                                }}
+                            />
                         </div>
                         <div className="bg-card rounded-lg border p-4">
                             <Commentaires
-                                indicateurs={rapports || []}
+                                indicateurs={filteredRapports || []}
                                 total_cas={totalCas}
                                 total_deces={totalDeces}
                                 selectedWeek={selectedWeek}
                                 selectedProvince={selectedProvince}
                                 provinceLabel={provinces?.find(p => p.value === selectedProvince)?.label}
                                 rapport_zs={selectedProvince !== "all"
-                                    ? rapports?.filter((rapport: any) => rapport.province_id === selectedProvince)[0]?.rapport_zs || []
+                                    ? filteredRapports?.filter((rapport: any) => rapport.province_id === selectedProvince)[0]?.rapport_zs || []
                                     : []
                                 }
                             />
@@ -220,7 +237,7 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
                     {/* Colonne droite: Indicateurs */}
                     <div className="bg-card rounded-lg border p-4">
                         <Indicateurs
-                            indicateurs={rapports || []}
+                            indicateurs={filteredRapports || []}
                             selectedProvince={selectedProvince}
                             provinces={provinces}
                         />

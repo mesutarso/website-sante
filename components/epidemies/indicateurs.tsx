@@ -101,7 +101,6 @@ function Indicateurs({ indicateurs, selectedProvince = "all", provinces }: Indic
                 taux_letalite={taux_letalite}
             />
 
-            {/* Affichage conditionnel : tableau de provinces ou zones de santé */}
             {selectedProvince === "all" ? (
                 <Tableau indicateurs={indicateurs} />
             ) : (
