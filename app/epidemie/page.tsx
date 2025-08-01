@@ -32,6 +32,15 @@ const getEpidemieImage = (nom: string): string => {
     }
     else if (nomLower.includes('anthrax')) {
         return '/images/epidemies/anthrax.jpg';
+    } 
+    else if (nomLower.includes('fièvre jaune')) {
+        return '/images/epidemies/FiEvre-jaune.jpg';
+    }else if (nomLower.includes('rubéole')) {
+        return '/images/epidemies/Rubeole.jpg';
+    }else if (nomLower.includes('tétanos')) {
+        return '/images/epidemies/Tétanos.jpg';
+    } else if (nomLower.includes('tétanos')) {
+        return '/images/epidemies/Tétanos.jpg';
     } else if (nomLower.includes('paludisme') || nomLower.includes('malaria')) {
         return '/images/prevention.jpeg';
     } else if (nomLower.includes('rougeole') || nomLower.includes('measles')) {
@@ -92,7 +101,14 @@ async function EpidemiePage() {
                 <h2 className="text-5xl font-semibold mb-12 text-gray-800">Épidémiologique sous surveillance</h2>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {epidemies && epidemies.length > 0 ? (
-                        [...epidemies].reverse().map((epidemie: Epidemie) => (
+                        epidemies
+                            .sort((a, b) => {
+                                // Mettre le choléra en premier
+                                if (a.nom.toLowerCase().includes('choléra')) return -1;
+                                if (b.nom.toLowerCase().includes('choléra')) return 1;
+                                return 0;
+                            })
+                            .map((epidemie: Epidemie) => (
                             <Card 
                                 key={epidemie.documentId} 
                                 className="hover:shadow-lg hover:scale-105 hover:z-50 transition-all duration-300 overflow-hidden group relative"
