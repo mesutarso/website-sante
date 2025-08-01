@@ -11,12 +11,24 @@ export const getWeekReportsByEpidemie = async (
   filters?: Filters
 ) => {
   const { data: rapports } = await getCollection("rapport-hebomandaires", {
+    fields: ["documentId", "cas", "deces"],
     populate: {
       epidemie: {
         fields: ["documentId", "nom"],
       },
       province: {
         fields: ["documentId", "nom"],
+      },
+      rapport_zs: {
+        populate: {
+          zones_de_sante: {
+            populate: {
+              province: {
+                fields: ["documentId", "nom"],
+              },
+            },
+          },
+        },
       },
     },
     filters: {
@@ -35,5 +47,9 @@ export const getWeekReportsByEpidemie = async (
     ...rapport,
     province: rapport.province?.nom,
     epidemie: rapport.epidemie?.nom,
+    rapport_zs: rapport.rapport_zs?.map((rapport_z: any) => ({
+      ...rapport_z,
+      zones_de_sante: rapport_z.zones_de_sante?.nom,
+    })),
   }));
 };
