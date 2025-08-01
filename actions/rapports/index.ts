@@ -47,6 +47,7 @@ export const getWeekReportsByEpidemie = async (
     ...rapport,
     province: rapport.province?.nom,
     epidemie: rapport.epidemie?.nom,
+    province_id: rapport.province?.documentId,
     rapport_zs: rapport.rapport_zs?.map((rapport_z: any) => ({
       ...rapport_z,
       zones_de_sante: rapport_z.zones_de_sante?.nom,

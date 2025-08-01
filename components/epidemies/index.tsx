@@ -18,7 +18,7 @@ type DashboardEpidemieProps = {
 }
 
 function DashboardEpidemie({ id }: DashboardEpidemieProps) {
-    const [selectedWeek, setSelectedWeek] = useState<number>(26);
+    const [selectedWeek, setSelectedWeek] = useState<number>(29);
     const [selectedProvince, setSelectedProvince] = useState<string>("all");
     const [showFilters, setShowFilters] = useState<boolean>(false);
     const router = useRouter();
@@ -208,35 +208,27 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
                                 selectedWeek={selectedWeek}
                                 selectedProvince={selectedProvince}
                                 provinceLabel={provinces?.find(p => p.value === selectedProvince)?.label}
+                                rapport_zs={selectedProvince !== "all"
+                                    ? rapports?.filter((rapport: any) => rapport.province_id === selectedProvince)[0]?.rapport_zs || []
+                                    : []
+                                }
                             />
                         </div>
+
                     </div>
 
                     {/* Colonne droite: Indicateurs */}
                     <div className="bg-card rounded-lg border p-4">
-                        <Indicateurs indicateurs={rapports || []} />
+                        <Indicateurs
+                            indicateurs={rapports || []}
+                            selectedProvince={selectedProvince}
+                            provinces={provinces}
+                        />
                     </div>
                 </div>
             )}
 
-            {/* Message si aucune donnée */}
-            {!isLoading && (!rapports || rapports.length === 0) && (
-                <div className="bg-card rounded-lg border p-8 text-center">
-                    <div className="text-muted-foreground">
-                        Aucune donnée disponible pour la semaine {selectedWeek}
-                        {selectedProvince !== "all" && provinces && (
-                            <span> dans la province {provinces.find(p => p.value === selectedProvince)?.label}</span>
-                        )}
-                    </div>
-                    <Button
-                        variant="outline"
-                        className="mt-4"
-                        onClick={clearFilters}
-                    >
-                        Réinitialiser les filtres
-                    </Button>
-                </div>
-            )}
+
         </div>
     )
 }

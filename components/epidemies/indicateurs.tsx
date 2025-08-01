@@ -3,7 +3,8 @@ import { Card, CardDescription } from "@/components/ui/card"
 import { motion } from "motion/react"
 import React from "react"
 import Tableau from "./tableau"
-import Commentaires from "./commentaires"
+import TableauZS from "./tableau-zs"
+
 
 const Tooltip = ({ text, children }: { text: string, children: React.ReactNode }) => (
     <span className="relative group cursor-pointer">
@@ -74,12 +75,23 @@ function IndicateursCards({ total_cas, total_deces, taux_letalite }: Indicateurs
 
 type IndicateursProps = {
     indicateurs: any[]
+    selectedProvince?: string
+    provinces?: any[]
 }
 
-function Indicateurs({ indicateurs }: IndicateursProps) {
+function Indicateurs({ indicateurs, selectedProvince = "all", provinces }: IndicateursProps) {
     const total_cas = indicateurs.reduce((acc, curr) => acc + curr.cas, 0)
     const total_deces = indicateurs.reduce((acc, curr) => acc + curr.deces, 0)
     const taux_letalite = total_cas > 0 ? (total_deces / total_cas) * 100 : 0
+
+    // Récupérer les données des zones de santé si une province est sélectionnée
+    const rapportZS = selectedProvince !== "all"
+        ? indicateurs?.filter((rapport: any) => rapport.province_id === selectedProvince)[0]?.rapport_zs || []
+        : []
+
+    const provinceLabel = selectedProvince !== "all"
+        ? provinces?.find(p => p.value === selectedProvince)?.label
+        : undefined
 
     return (
         <>
@@ -88,8 +100,16 @@ function Indicateurs({ indicateurs }: IndicateursProps) {
                 total_deces={total_deces}
                 taux_letalite={taux_letalite}
             />
-            <Tableau indicateurs={indicateurs} />
 
+            {/* Affichage conditionnel : tableau de provinces ou zones de santé */}
+            {selectedProvince === "all" ? (
+                <Tableau indicateurs={indicateurs} />
+            ) : (
+                <TableauZS
+                    rapport_zs={rapportZS}
+                    provinceLabel={provinceLabel}
+                />
+            )}
         </>
     )
 }

@@ -8,6 +8,7 @@ type CommentairesProps = {
     selectedWeek?: number
     selectedProvince?: string
     provinceLabel?: string
+    rapport_zs?: any[]
 }
 
 function Commentaires({
@@ -16,7 +17,8 @@ function Commentaires({
     total_deces,
     selectedWeek,
     selectedProvince,
-    provinceLabel
+    provinceLabel,
+    rapport_zs
 }: CommentairesProps) {
     const indicateursTries = [...indicateurs].sort((a, b) => {
         if (!a.province) return 1;
@@ -59,6 +61,13 @@ function Commentaires({
             ? `Données filtrées pour la province de ${province}`
             : `Analyse spécifique à la province de ${province}`;
 
+        // Analyse des zones de santé si disponibles
+        const zonesSante = rapport_zs || [];
+        const zonesAvecCas = zonesSante.filter(zs => zs.cas > 0);
+        const zonesAvecDeces = zonesSante.filter(zs => zs.deces > 0);
+        const zoneMaxCas = zonesSante.length > 0 ? zonesSante.reduce((max, zs) => zs.cas > max.cas ? zs : max, zonesSante[0]) : null;
+        const zoneMaxDeces = zonesSante.length > 0 ? zonesSante.reduce((max, zs) => zs.deces > max.deces ? zs : max, zonesSante[0]) : null;
+
         return (
             <div className="space-y-3 text-sm text-gray-700">
                 <p>
@@ -71,6 +80,31 @@ function Commentaires({
                     <strong>Situation épidémiologique :</strong> {isFilteredByProvince ? `Selon les filtres appliqués, la province de` : `La province de`} {province} présente actuellement {indicateur.cas?.toLocaleString('fr-FR') || 0} cas confirmés
                     et {indicateur.deces?.toLocaleString('fr-FR') || 0} décès, soit un taux de létalité de {tauxLetaliteProvince.toLocaleString('fr-FR', { maximumFractionDigits: 2 })}%.
                 </p>
+
+                {/* Section zones de santé */}
+                {zonesSante.length > 0 && (
+                    <div className="mt-4 p-3 bg-gray-50 rounded-lg">
+                        <p className="font-semibold text-sm mb-2">🏥 Analyse par zones de santé :</p>
+                        <p className="text-xs mb-2">
+                            <strong>Répartition géographique :</strong> L'épidémie affecte {zonesAvecCas.length} zone{zonesAvecCas.length > 1 ? 's' : ''} de santé sur les {zonesSante.length} zones de la province.
+                        </p>
+                        {zoneMaxCas && (
+                            <p className="text-xs">
+                                <strong>Zone la plus touchée :</strong> {zoneMaxCas.zones_de_sante} avec {zoneMaxCas.cas.toLocaleString('fr-FR')} cas
+                                {zoneMaxDeces && zoneMaxDeces.zones_de_sante !== zoneMaxCas.zones_de_sante && (
+                                    <span>, tandis que {zoneMaxDeces.zones_de_sante} enregistre le plus de décès ({zoneMaxDeces.deces.toLocaleString('fr-FR')} décès)</span>
+                                )}
+                                .
+                            </p>
+                        )}
+                        <p className="text-xs">
+                            <strong>Impact local :</strong> {zonesAvecCas.length === zonesSante.length
+                                ? 'Toutes les zones de santé de la province sont affectées, nécessitant une réponse coordonnée au niveau provincial.'
+                                : `${zonesAvecCas.length} zone${zonesAvecCas.length > 1 ? 's' : ''} sur ${zonesSante.length} ${zonesAvecCas.length > 1 ? 'sont touchées' : 'est touchée'}, indiquant une propagation ${zonesAvecCas.length > zonesSante.length / 2 ? 'majoritaire' : 'encore localisée'} dans la province.`}
+                        </p>
+                    </div>
+                )}
+
                 <p>
                     <strong>Tendance :</strong> {tauxLetaliteProvince > 5
                         ? `Le taux de létalité élevé (${tauxLetaliteProvince.toFixed(2)}%) nécessite une attention particulière et un renforcement des capacités de prise en charge.`
