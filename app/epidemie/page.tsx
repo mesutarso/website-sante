@@ -19,7 +19,7 @@ interface Epidemie {
 // Images par type d'épidémie
 const getEpidemieImage = (nom: string): string => {
     const nomLower = nom.toLowerCase();
-    
+
     if (nomLower.includes('covid') || nomLower.includes('corona')) {
         return '/images/virus.jpg';
     } else if (nomLower.includes('ebola')) {
@@ -32,12 +32,12 @@ const getEpidemieImage = (nom: string): string => {
     }
     else if (nomLower.includes('anthrax')) {
         return '/images/epidemies/anthrax.jpg';
-    } 
+    }
     else if (nomLower.includes('fièvre jaune')) {
         return '/images/epidemies/FiEvre-jaune.jpg';
-    }else if (nomLower.includes('rubéole')) {
+    } else if (nomLower.includes('rubéole')) {
         return '/images/epidemies/Rubeole.jpg';
-    }else if (nomLower.includes('tétanos')) {
+    } else if (nomLower.includes('tétanos')) {
         return '/images/epidemies/Tétanos.jpg';
     } else if (nomLower.includes('tétanos')) {
         return '/images/epidemies/Tétanos.jpg';
@@ -52,7 +52,7 @@ const getEpidemieImage = (nom: string): string => {
     } else if (nomLower.includes('diarrhée') || nomLower.includes('diarrhea')) {
         return '/images/hygiene.jpeg';
     } else {
-        // Image par défaut
+
         return '/images/virus.jpg';
     }
 };
@@ -63,7 +63,7 @@ async function EpidemiePage() {
     return (
         <div>
             {/* Section avec image de fond */}
-            
+
             <div className="relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/images/epidemies/epidemie.jpg)' }}>
                 <div className="absolute inset-0 bg-black/50"></div>
                 <Container className="relative z-10 mb-12">
@@ -97,8 +97,8 @@ async function EpidemiePage() {
             </div>
 
             <Container>
-                
-                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Épidémiologique sous surveillance</h2>
+
+                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Maladies sous surveillance</h2>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {epidemies && epidemies.length > 0 ? (
                         epidemies
@@ -109,70 +109,70 @@ async function EpidemiePage() {
                                 return 0;
                             })
                             .map((epidemie: Epidemie) => (
-                            <Card 
-                                key={epidemie.documentId} 
-                                className="hover:shadow-lg hover:scale-105 hover:z-50 transition-all duration-300 overflow-hidden group relative"
-                                style={{ 
-                                    backgroundImage: `url(${getEpidemieImage(epidemie.nom)})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    backgroundRepeat: 'no-repeat'
-                                }}
-                            >
-                                {/* Overlay sombre pour la lisibilité */}
-                                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors duration-300"></div>
-                                
-                                {/* Contenu de la carte */}
-                                <div className="relative z-10">
-                                    <CardHeader className="pb-3">
-                                        <div className="flex items-start justify-between">
-                                            <CardTitle className="text-lg font-semibold text-white">
-                                                {epidemie.nom}
-                                            </CardTitle>
-                                            <Badge
-                                                variant={epidemie.rapport_hebomandaires > 0 ? "default" : "secondary"}
-                                                className="text-xs"
-                                            >
-                                                {epidemie.rapport_hebomandaires > 0 ? "Active" : "Inactive"}
-                                            </Badge>
-                                        </div>
-                                    </CardHeader>
-                                    
-                                    <CardContent className="pt-0">
-                                        {epidemie.description && (
-                                            <p className="text-sm text-gray-200 mb-4 line-clamp-2">
-                                                {epidemie.description}
-                                            </p>
-                                        )}
+                                <Card
+                                    key={epidemie.documentId}
+                                    className="hover:shadow-lg hover:scale-105 hover:z-50 transition-all duration-300 overflow-hidden group relative"
+                                    style={{
+                                        backgroundImage: `url(${getEpidemieImage(epidemie.nom)})`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundRepeat: 'no-repeat'
+                                    }}
+                                >
+                                    {/* Overlay sombre pour la lisibilité */}
+                                    <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors duration-300"></div>
 
-                                        <div className="space-y-2 mb-4">
-                                            <div className="flex items-center justify-between text-xs">
-                                                <span className="text-gray-300">Code OMS :</span>
-                                                <span className="font-medium text-white">
-                                                    {epidemie.codeOMS || 'Non défini'}
-                                                </span>
+                                    {/* Contenu de la carte */}
+                                    <div className="relative z-10">
+                                        <CardHeader className="pb-3">
+                                            <div className="flex items-start justify-between">
+                                                <CardTitle className="text-lg font-semibold text-white">
+                                                    {epidemie.nom}
+                                                </CardTitle>
+                                                <Badge
+                                                    variant={epidemie.rapport_hebomandaires > 0 ? "default" : "secondary"}
+                                                    className="text-xs"
+                                                >
+                                                    {epidemie.rapport_hebomandaires > 0 ? "Active" : "Inactive"}
+                                                </Badge>
                                             </div>
-                                            <div className="flex items-center justify-between text-xs">
-                                                <span className="text-gray-300">Rapports :</span>
-                                                <span className="font-medium text-blue-300">
-                                                    {epidemie.rapport_hebomandaires} hebdomadaires
-                                                </span>
+                                        </CardHeader>
+
+                                        <CardContent className="pt-0">
+                                            {epidemie.description && (
+                                                <p className="text-sm text-gray-200 mb-4 line-clamp-2">
+                                                    {epidemie.description}
+                                                </p>
+                                            )}
+
+                                            <div className="space-y-2 mb-4">
+                                                <div className="flex items-center justify-between text-xs">
+                                                    <span className="text-gray-300">Code OMS :</span>
+                                                    <span className="font-medium text-white">
+                                                        {epidemie.codeOMS || 'Non défini'}
+                                                    </span>
+                                                </div>
+                                                <div className="flex items-center justify-between text-xs">
+                                                    <span className="text-gray-300">Rapports :</span>
+                                                    <span className="font-medium text-blue-300">
+                                                        {epidemie.rapport_hebomandaires} hebdomadaires
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <Link href={`/epidemie/${epidemie.documentId}`}>
-                                            <Button
-                                                className="w-full bg-white/20 hover:bg-white/30 text-white border-white/30 hover:border-white/50"
-                                                variant="outline"
-                                                size="sm"
-                                            >
-                                                <BarChart3 className="w-4 h-4 mr-2" />
-                                                Voir les statistiques
-                                            </Button>
-                                        </Link>
-                                    </CardContent>
-                                </div>
-                            </Card>
-                        ))
+                                            <Link href={`/epidemie/${epidemie.documentId}`}>
+                                                <Button
+                                                    className="w-full bg-white/20 hover:bg-white/30 text-white border-white/30 hover:border-white/50"
+                                                    variant="outline"
+                                                    size="sm"
+                                                >
+                                                    <BarChart3 className="w-4 h-4 mr-2" />
+                                                    Voir les statistiques
+                                                </Button>
+                                            </Link>
+                                        </CardContent>
+                                    </div>
+                                </Card>
+                            ))
                     ) : (
                         <div className="col-span-full text-center py-12">
                             <AlertTriangle className="w-12 h-12 text-gray-400 mx-auto mb-4" />
