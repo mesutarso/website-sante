@@ -32,6 +32,15 @@ const getEpidemieImage = (nom: string): string => {
     }
     else if (nomLower.includes('anthrax')) {
         return '/images/epidemies/anthrax.jpg';
+    } 
+    else if (nomLower.includes('fièvre jaune')) {
+        return '/images/epidemies/FiEvre-jaune.jpg';
+    }else if (nomLower.includes('rubéole')) {
+        return '/images/epidemies/Rubeole.jpg';
+    }else if (nomLower.includes('tétanos')) {
+        return '/images/epidemies/Tétanos.jpg';
+    } else if (nomLower.includes('tétanos')) {
+        return '/images/epidemies/Tétanos.jpg';
     } else if (nomLower.includes('paludisme') || nomLower.includes('malaria')) {
         return '/images/prevention.jpeg';
     } else if (nomLower.includes('rougeole') || nomLower.includes('measles')) {
@@ -88,10 +97,18 @@ async function EpidemiePage() {
             </div>
 
             <Container>
-                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Maladies sous surveillance</h2>
+                
+                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Épidémiologique sous surveillance</h2>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {epidemies && epidemies.length > 0 ? (
-                        [...epidemies].reverse().map((epidemie: Epidemie) => (
+                        epidemies
+                            .sort((a, b) => {
+                                // Mettre le choléra en premier
+                                if (a.nom.toLowerCase().includes('choléra')) return -1;
+                                if (b.nom.toLowerCase().includes('choléra')) return 1;
+                                return 0;
+                            })
+                            .map((epidemie: Epidemie) => (
                             <Card 
                                 key={epidemie.documentId} 
                                 className="hover:shadow-lg hover:scale-105 hover:z-50 transition-all duration-300 overflow-hidden group relative"
@@ -163,6 +180,23 @@ async function EpidemiePage() {
                         </div>
                     )}
                 </div>
+                {/* Section d'urgence en verre */}
+                <div className="mt-12 relative">
+                    <div className="bg-green-500/10 backdrop-blur-md border border-green-200/30 rounded-lg p-6 shadow-lg">
+                        <div className="flex items-center gap-4">
+                            <div className="bg-green-500/20 p-3 rounded-full">
+                                <AlertTriangle className="w-6 h-6 text-green-400" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-semibold text-black mb-1">Urgence médicale</h3>
+                                <p className="text-black-200">
+                                    En cas d&apos;urgence, appelez immédiatement le <span className="font-bold text-black text-lg">151</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </Container>
 
             <div className="mt-8 bg-brown">
