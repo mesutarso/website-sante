@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin/", "/private/", "/api/"],
+      disallow: ["/private/", "/api/"],
     },
     sitemap: "https://sante.gouv.cd/sitemap.xml",
   };
