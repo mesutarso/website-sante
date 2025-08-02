@@ -79,7 +79,7 @@ function Commentaires({
                     <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                         <p className="font-semibold text-sm mb-2">🏥 Analyse par zones de santé :</p>
                         <p className="text-xs mb-2">
-                            <strong>Répartition géographique :</strong> L'épidémie affecte {zonesAvecCas.length} zone{zonesAvecCas.length > 1 ? 's' : ''} de santé sur les {zonesSante.length} zones de la province.
+                            <strong>Répartition géographique :</strong> L'épidémie affecte {zonesAvecCas.length} zone{zonesAvecCas.length > 1 ? 's' : ''} de santé  de la province.
                         </p>
                         {zoneMaxCas && (
                             <p className="text-xs">
