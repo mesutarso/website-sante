@@ -98,7 +98,7 @@ async function EpidemiePage() {
 
             <Container>
 
-                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Maladies sous surveillance</h2>
+                <h2 className="text-5xl font-semibold mb-12 text-gray-800">Epidemies sous surveillance</h2>
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {epidemies && epidemies.length > 0 ? (
                         epidemies
@@ -229,7 +229,7 @@ async function EpidemiePage() {
                         <Card className="text-center">
                             <CardContent className="p-4">
                                 <AlertTriangle className="w-8 h-8 text-red-600 mx-auto mb-2" />
-                                <div className="text-2xl font-bold text-red-600">0</div>
+                                <div className="text-2xl font-bold text-red-600">2</div>
                                 <div className="text-sm text-gray-600">Alertes actives</div>
                             </CardContent>
                         </Card>
