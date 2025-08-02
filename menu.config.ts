@@ -54,7 +54,7 @@ export const MENU = [
     href: "/contact",
   },
   {
-    name: "Epidemiologie",   
+    name: "Épidemiologie",   
     href: "/epidemie",
   },
 ];

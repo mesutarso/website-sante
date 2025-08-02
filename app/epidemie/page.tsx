@@ -4,7 +4,7 @@ import { getEpidemies } from "@/actions/epidemies";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, TrendingUp, Activity, Shield, BarChart3, Users, Calendar } from "lucide-react";
+import { AlertTriangle, TrendingUp, Activity, Shield, BarChart3, Users, Calendar, Phone } from "lucide-react";
 import Link from "next/link";
 
 // Interface pour les données d'épidémie
@@ -190,7 +190,13 @@ async function EpidemiePage() {
                             <div>
                                 <h3 className="text-xl font-semibold text-black mb-1">Urgence médicale</h3>
                                 <p className="text-black-200">
-                                    En cas d&apos;urgence, appelez immédiatement le <span className="font-bold text-black text-lg">151</span>
+                                    En cas d&apos;urgence, appelez immédiatement le 
+                                    <a 
+                                        href="tel:151" 
+                                        className="font-bold text-black text-lg hover:text-green-600 transition-colors duration-200 inline-flex items-center gap-2 ml-1"
+                                    >
+                                        151<Phone className="w-8 h-8" />
+                                    </a>
                                 </p>
                             </div>
                         </div>

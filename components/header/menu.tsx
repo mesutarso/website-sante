@@ -81,7 +81,7 @@ export const Menu = ({ className }: any) => {
                                                         navigationMenuTriggerStyle(), 
                                                         "font-semibold uppercase text-sm", 
                                                         isActive(item) && "text-white bg-blue",
-                                                        item.name === "Epidemiologie" && "border-1 border-red-500"
+                                                        item.name === "Épidemiologie" && "border-1 border-red-500 bg-red-500"
                                                     )}>
                                                         {item.name}
                                                     </span>
