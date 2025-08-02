@@ -77,7 +77,12 @@ export const Menu = ({ className }: any) => {
                                         return (
                                             <NavigationMenuItem key={index} >
                                                 <Link href={item.href} >
-                                                    <span className={cn(navigationMenuTriggerStyle(), "font-semibold uppercase text-sm", isActive(item) && "text-white bg-blue")}>
+                                                    <span className={cn(
+                                                        navigationMenuTriggerStyle(), 
+                                                        "font-semibold uppercase text-sm", 
+                                                        isActive(item) && "text-white bg-blue",
+                                                        item.name === "Epidemiologie" && "border-1 border-red-500"
+                                                    )}>
                                                         {item.name}
                                                     </span>
                                                 </Link>

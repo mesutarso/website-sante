@@ -121,11 +121,11 @@ export default function HeroCarousel() {
             >
                 <div className="event-cat text-blue flex mb-2 md:mb-4">
                     <time className="bg-gray-200 px-2 py-1 rounded-md text-xs font-semibold uppercase" dateTime="2025-04-07">
-                        Evenement / Lundi 7 Avril 2025
+                        Evenement / 8 Septembre 2025
                     </time>
                 </div>
                 <div>
-                    <h4 className="font-bold uppercase text-xs md:text-sm text-blue">Journée mondiale de la santé</h4>
+                    <h4 className="font-bold uppercase text-xs md:text-sm text-blue">Journée mondiale de la physiothérapie</h4>
                 </div>
             </div>
         </div>
