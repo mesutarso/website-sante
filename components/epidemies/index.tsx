@@ -240,6 +240,7 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
                             indicateurs={filteredRapports || []}
                             selectedProvince={selectedProvince}
                             provinces={provinces}
+                            onProvinceSelect={setSelectedProvince}
                         />
                     </div>
                 </div>

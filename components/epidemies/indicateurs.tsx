@@ -1,6 +1,6 @@
 'use client'
 import { Card, CardDescription } from "@/components/ui/card"
-import { motion } from "motion/react"
+import { motion, AnimatePresence } from "motion/react"
 import React from "react"
 import Tableau from "./tableau"
 import TableauZS from "./tableau-zs"
@@ -77,9 +77,10 @@ type IndicateursProps = {
     indicateurs: any[]
     selectedProvince?: string
     provinces?: any[]
+    onProvinceSelect?: (provinceId: string) => void
 }
 
-function Indicateurs({ indicateurs, selectedProvince = "all", provinces }: IndicateursProps) {
+function Indicateurs({ indicateurs, selectedProvince = "all", provinces, onProvinceSelect }: IndicateursProps) {
     const total_cas = indicateurs.reduce((acc, curr) => acc + curr.cas, 0)
     const total_deces = indicateurs.reduce((acc, curr) => acc + curr.deces, 0)
     const taux_letalite = total_cas > 0 ? (total_deces / total_cas) * 100 : 0
@@ -93,6 +94,12 @@ function Indicateurs({ indicateurs, selectedProvince = "all", provinces }: Indic
         ? provinces?.find(p => p.value === selectedProvince)?.label
         : undefined
 
+    const handleBackToProvinces = () => {
+        if (onProvinceSelect) {
+            onProvinceSelect("all");
+        }
+    };
+
     return (
         <>
             <IndicateursCards
@@ -101,14 +108,37 @@ function Indicateurs({ indicateurs, selectedProvince = "all", provinces }: Indic
                 taux_letalite={taux_letalite}
             />
 
-            {selectedProvince === "all" ? (
-                <Tableau indicateurs={indicateurs} />
-            ) : (
-                <TableauZS
-                    rapport_zs={rapportZS}
-                    provinceLabel={provinceLabel}
-                />
-            )}
+            <AnimatePresence mode="wait">
+                {selectedProvince === "all" ? (
+                    <motion.div
+                        key="provinces"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                        <Tableau
+                            indicateurs={indicateurs}
+                            onProvinceSelect={onProvinceSelect}
+                            provinces={provinces}
+                        />
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        key="zones-sante"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                    >
+                        <TableauZS
+                            rapport_zs={rapportZS}
+                            provinceLabel={provinceLabel}
+                            onBackToProvinces={handleBackToProvinces}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     )
 }

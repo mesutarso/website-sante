@@ -1,5 +1,7 @@
 'use client'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { ArrowLeft } from "lucide-react"
 
 interface ZoneSante {
     zones_de_sante: string;
@@ -10,16 +12,30 @@ interface ZoneSante {
 interface TableauZSProps {
     rapport_zs: ZoneSante[];
     provinceLabel?: string;
+    onBackToProvinces?: () => void;
 }
 
-function TableauZS({ rapport_zs, provinceLabel }: TableauZSProps) {
+function TableauZS({ rapport_zs, provinceLabel, onBackToProvinces }: TableauZSProps) {
     if (!rapport_zs || rapport_zs.length === 0) {
         return (
             <Card className="w-full max-w-4xl mx-auto mt-4 shadow-md">
                 <CardHeader>
-                    <CardTitle className="text-lg font-bold">
-                        Détail par zone de santé {provinceLabel && `- ${provinceLabel}`}
-                    </CardTitle>
+                    <div className="flex items-center justify-between">
+                        <CardTitle className="text-lg font-bold">
+                            Détail par zone de santé {provinceLabel && `- ${provinceLabel}`}
+                        </CardTitle>
+                        {onBackToProvinces && (
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={onBackToProvinces}
+                                className="flex items-center gap-2"
+                            >
+                                <ArrowLeft className="w-4 h-4" />
+                                Retour aux provinces
+                            </Button>
+                        )}
+                    </div>
                 </CardHeader>
                 <CardContent>
                     <div className="text-center text-muted-foreground py-8">
@@ -39,9 +55,22 @@ function TableauZS({ rapport_zs, provinceLabel }: TableauZSProps) {
     return (
         <Card className="w-full max-w-4xl mx-auto mt-4 shadow-md">
             <CardHeader>
-                <CardTitle className="text-lg font-bold">
-                    Détail par zone de santé {provinceLabel && `- ${provinceLabel}`}
-                </CardTitle>
+                <div className="flex items-center justify-between">
+                    <CardTitle className="text-lg font-bold">
+                        Détail par zone de santé {provinceLabel && `- ${provinceLabel}`}
+                    </CardTitle>
+                    {onBackToProvinces && (
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={onBackToProvinces}
+                            className="flex items-center gap-2"
+                        >
+                            <ArrowLeft className="w-4 h-4" />
+                            Retour aux provinces
+                        </Button>
+                    )}
+                </div>
             </CardHeader>
             <CardContent className="overflow-x-auto">
                 <table className="min-w-full bg-white border border-gray-200 rounded-lg">
