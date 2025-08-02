@@ -39,7 +39,7 @@ function DashboardEpidemie({ id }: DashboardEpidemieProps) {
         return rapports.filter(r => r.province_id === selectedProvince);
     }, [rapports, selectedProvince]);
 
-    const weekOptions = Array.from({ length: 52 }, (_, i) => i + 1);
+    const weekOptions = Array.from({ length: 4 }, (_, i) => i + 26);
 
     const totalCas = filteredRapports?.reduce((acc, curr) => acc + curr.cas, 0) || 0;
     const totalDeces = filteredRapports?.reduce((acc, curr) => acc + curr.deces, 0) || 0;
