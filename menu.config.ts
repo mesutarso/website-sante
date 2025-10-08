@@ -50,11 +50,29 @@ export const MENU = [
     href: "/actualites",
   },
   {
+    name: "Documents",
+    href: "#",
+    submenu: [
+      {
+        name: "Conseils des ministres",
+        href: "/documents/conseils-des-ministres",
+      },
+      {
+        name: "Arrêtés ministériels",
+        href: "/documents/arretes-ministeriels",
+      },
+      {
+        name: "Déclarations et communiqués",
+        href: "/documents/declarations-et-communiques",
+      },
+    ],
+  },
+  {
     name: "Contact",
     href: "/contact",
   },
   {
-    name: "Épidemiologie",   
+    name: "Épidemiologie",
     href: "/epidemie",
   },
 ];
@@ -65,8 +83,8 @@ export const USEFULS_LINKS = [
     href: "/documents",
   },
   {
-    name: "Services",
-    href: "/services",
+    name: "CSU",
+    href: "/csu",
   },
   {
     name: "Institutions",
