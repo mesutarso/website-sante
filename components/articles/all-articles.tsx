@@ -73,7 +73,7 @@ const AllArticles = () => {
         refetchOnWindowFocus: false,
         refetchOnMount: true,
         retry: 2,
-        retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 10000),
+        retryDelay: (attemptIndex: number) => Math.min(1000 * 2 ** attemptIndex, 10000),
     });
 
     if (isLoading || !data) {
