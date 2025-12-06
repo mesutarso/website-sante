@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useMemo } from "react"
 import Image from "next/image"
 import { motion, useInView, useAnimation } from "motion/react"
 import {
@@ -168,40 +168,66 @@ const TimelineItem = ({
   )
 }
 
-// Floating elements background
+// Floating elements background - Optimisé pour réduire la consommation CPU
 const FloatingElements = () => {
+  // Mémoriser les valeurs aléatoires pour éviter les recalculs à chaque render
+  const floatingElements = useMemo(() => {
+    const icons = [Building2, FileText, BarChart3, Globe, Briefcase, BookOpen]
+    return Array.from({ length: 10 }, (_, i) => {
+      const iconIndex = Math.floor(Math.random() * icons.length)
+      const RandomIcon = icons[iconIndex]
+      const startY = Math.random() * 100
+      const startX = Math.random() * 100
+      const endY = Math.random() * -100 - 50
+      const endX = (Math.random() - 0.5) * 100
+      const rotation = Math.random() * 360
+      const duration = Math.random() * 10 + 15
+      const delay = Math.random() * 5
+      const size = Math.random() * 30 + 20
+
+      return {
+        key: i,
+        Icon: RandomIcon,
+        startY,
+        startX,
+        endY,
+        endX,
+        rotation,
+        duration,
+        delay,
+        size,
+      }
+    })
+  }, [])
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(15)].map((_, i) => {
-        const icons = [Building2, FileText, BarChart3, Globe, Briefcase, BookOpen]
-        const RandomIcon = icons[Math.floor(Math.random() * icons.length)]
-
-        return (
-          <motion.div
-            key={i}
-            className="absolute text-blue-200 opacity-20"
-            style={{
-              insetBlockStart: `${Math.random() * 100}%`,
-              insetInlineStart: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, Math.random() * -100 - 50],
-              x: [0, (Math.random() - 0.5) * 100],
-              rotate: [0, Math.random() * 360],
-              opacity: [0.2, 0.1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 15,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "loop",
-              ease: "linear",
-              delay: Math.random() * 5,
-            }}
-          >
-            <RandomIcon size={Math.random() * 30 + 20} />
-          </motion.div>
-        )
-      })}
+      {floatingElements.map((element) => (
+        <motion.div
+          key={element.key}
+          className="absolute text-blue-200 opacity-20"
+          style={{
+            insetBlockStart: `${element.startY}%`,
+            insetInlineStart: `${element.startX}%`,
+            willChange: "transform, opacity",
+          }}
+          animate={{
+            y: [0, element.endY],
+            x: [0, element.endX],
+            rotate: [0, element.rotation],
+            opacity: [0.2, 0.1, 0],
+          }}
+          transition={{
+            duration: element.duration,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "loop",
+            ease: "linear",
+            delay: element.delay,
+          }}
+        >
+          <element.Icon size={element.size} />
+        </motion.div>
+      ))}
     </div>
   )
 }
@@ -238,23 +264,40 @@ const ParallaxSection = ({
 export default function SecretariatGeneralPage() {
   // Animation for the building icon
   const buildingControls = useAnimation()
+  const isMountedRef = useRef(true)
 
   useEffect(() => {
+    isMountedRef.current = true
+    
     const animateBuilding = async () => {
+      if (!isMountedRef.current) return
+      
       await buildingControls.start({
         scale: [0.8, 1.2, 1],
         opacity: [0, 1, 1],
         transition: { duration: 1.5 },
       })
 
-      // Subtle continuous animation
-      buildingControls.start({
-        scale: [1, 1.05, 1],
-        transition: { duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" },
-      })
+      // Subtle continuous animation - optimisé avec will-change
+      if (isMountedRef.current) {
+        buildingControls.start({
+          scale: [1, 1.05, 1],
+          transition: { 
+            duration: 3, 
+            repeat: Number.POSITIVE_INFINITY, 
+            repeatType: "reverse",
+            ease: "easeInOut"
+          },
+        })
+      }
     }
 
     animateBuilding()
+
+    return () => {
+      isMountedRef.current = false
+      buildingControls.stop()
+    }
   }, [buildingControls])
 
   return (

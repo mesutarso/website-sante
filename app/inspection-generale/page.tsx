@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useMemo } from "react"
 import Image from "next/image"
 import { motion, useInView, useAnimation } from "motion/react"
 import { Shield, Search, FileCheck, Scale, Users, Award, ClipboardCheck, BookOpen, Building, Gavel } from "lucide-react"
@@ -64,31 +64,56 @@ const AnimatedCard = ({ icon: Icon, title, children, delay = 0 }: { icon: React.
   )
 }
 
-// Floating particles background
+// Floating particles background - Optimisé pour réduire la consommation CPU
 const ParticlesBackground = () => {
+  // Mémoriser les valeurs aléatoires pour éviter les recalculs à chaque render
+  const particles = useMemo(() => {
+    return Array.from({ length: 12 }, (_, i) => {
+      const size = Math.random() * 30 + 10
+      const startY = Math.random() * 100
+      const startX = Math.random() * 100
+      const endY = Math.random() * -100 - 50
+      const endX = (Math.random() - 0.5) * 100
+      const duration = Math.random() * 10 + 10
+      const delay = Math.random() * 5
+
+      return {
+        key: i,
+        size,
+        startY,
+        startX,
+        endY,
+        endX,
+        duration,
+        delay,
+      }
+    })
+  }, [])
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
+      {particles.map((particle) => (
         <motion.div
-          key={i}
+          key={particle.key}
           className="absolute rounded-full bg-blue opacity-10"
           style={{
-            inlineSize: Math.random() * 30 + 10,
-            blockSize: Math.random() * 30 + 10,
-            insetBlockStart: `${Math.random() * 100}%`,
-            insetInlineStart: `${Math.random() * 100}%`,
+            inlineSize: particle.size,
+            blockSize: particle.size,
+            insetBlockStart: `${particle.startY}%`,
+            insetInlineStart: `${particle.startX}%`,
+            willChange: "transform, opacity",
           }}
           animate={{
-            y: [0, Math.random() * -100 - 50],
-            x: [0, (Math.random() - 0.5) * 100],
+            y: [0, particle.endY],
+            x: [0, particle.endX],
             opacity: [0.1, 0.2, 0],
           }}
           transition={{
-            duration: Math.random() * 10 + 10,
+            duration: particle.duration,
             repeat: Number.POSITIVE_INFINITY,
             repeatType: "loop",
             ease: "linear",
-            delay: Math.random() * 5,
+            delay: particle.delay,
           }}
         />
       ))}
@@ -143,23 +168,40 @@ const AnimatedCounter = ({ value, label, delay = 0 }: { value: string | number; 
 export default function InspectionGeneralePage() {
   // Animation for the shield icon
   const shieldControls = useAnimation()
+  const isMountedRef = useRef(true)
 
   useEffect(() => {
+    isMountedRef.current = true
+    
     const animateShield = async () => {
+      if (!isMountedRef.current) return
+      
       await shieldControls.start({
         scale: [0.8, 1.2, 1],
         opacity: [0, 1, 1],
         transition: { duration: 1.5 },
       })
 
-      // Subtle continuous animation
-      shieldControls.start({
-        scale: [1, 1.05, 1],
-        transition: { duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" },
-      })
+      // Subtle continuous animation - optimisé avec will-change
+      if (isMountedRef.current) {
+        shieldControls.start({
+          scale: [1, 1.05, 1],
+          transition: { 
+            duration: 3, 
+            repeat: Number.POSITIVE_INFINITY, 
+            repeatType: "reverse",
+            ease: "easeInOut"
+          },
+        })
+      }
     }
 
     animateShield()
+
+    return () => {
+      isMountedRef.current = false
+      shieldControls.stop()
+    }
   }, [shieldControls])
 
   return (

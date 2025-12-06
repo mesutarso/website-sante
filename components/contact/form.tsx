@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,20 +14,49 @@ export function ContactForm() {
         email: '',
         message: '',
     });
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const delayRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Cleanup timeouts on unmount
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+            if (delayRef.current) {
+                clearTimeout(delayRef.current);
+            }
+        };
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
 
+        // Clear any existing timeouts
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        if (delayRef.current) {
+            clearTimeout(delayRef.current);
+        }
+
         try {
             // Simulation d'envoi
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise(resolve => {
+                delayRef.current = setTimeout(() => {
+                    resolve(undefined);
+                    delayRef.current = null;
+                }, 1000);
+            });
+            
             setShowThankYou(true);
             setFormData({ name: '', email: '', message: '' });
 
             // Fermer le message après 5 secondes
-            setTimeout(() => {
+            timeoutRef.current = setTimeout(() => {
                 setShowThankYou(false);
+                timeoutRef.current = null;
             }, 5000);
         } catch (error) {
             console.error('Erreur lors de l\'envoi:', error);

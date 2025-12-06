@@ -3,27 +3,68 @@ import { Section, Container } from "@/components/craft";
 import CardArticle from "./Card";
 import FirstCard from "./fisrt-card";
 import { useQuery, } from '@tanstack/react-query'
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { getSimplePosts } from "@/lib/wordpress";
 import { Skeleton } from "../ui/skeleton";
 
 const AllArticles = () => {
     const [retryCount, setRetryCount] = useState(0);
+    const abortControllerRef = useRef<AbortController | null>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+            if (abortControllerRef.current) {
+                abortControllerRef.current.abort();
+            }
+        };
+    }, []);
 
     const { data, isLoading, isError, error, refetch } = useQuery({
         queryKey: ['articles'],
         queryFn: async () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+                timeoutRef.current = null;
+            }
+            if (abortControllerRef.current) {
+                abortControllerRef.current.abort();
+            }
+
             try {
-                // Augmenter le timeout pour la requête
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 secondes
+                // Créer un nouveau AbortController pour cette requête
+                abortControllerRef.current = new AbortController();
+                const controller = abortControllerRef.current;
+
+                // Timeout pour annuler la requête après 30 secondes
+                timeoutRef.current = setTimeout(() => {
+                    controller.abort();
+                    timeoutRef.current = null;
+                }, 30000);
 
                 const result = await getSimplePosts({ per_page: 100 });
 
-                clearTimeout(timeoutId);
+                // Nettoyer le timeout si la requête réussit
+                if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current);
+                    timeoutRef.current = null;
+                }
+                abortControllerRef.current = null;
+
                 return result;
             } catch (err) {
+                // Nettoyer en cas d'erreur
+                if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current);
+                    timeoutRef.current = null;
+                }
+                abortControllerRef.current = null;
+
                 console.error("Erreur lors du chargement des articles:", err);
                 throw err;
             }

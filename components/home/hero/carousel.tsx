@@ -26,9 +26,15 @@ export default function HeroCarousel() {
         setCount(api.scrollSnapList().length)
         setCurrent(api.selectedScrollSnap())
 
-        api.on("select", () => {
+        const handleSelect = () => {
             setCurrent(api.selectedScrollSnap())
-        })
+        }
+
+        api.on("select", handleSelect)
+
+        return () => {
+            api.off("select", handleSelect)
+        }
     }, [api])
 
     const handleDotClick = (index: number) => {

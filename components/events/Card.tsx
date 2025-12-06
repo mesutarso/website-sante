@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../ui/dialog";
@@ -40,7 +40,16 @@ const EventCard: React.FC<any> = ({
     phone: "",
   });
 
- 
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const validateForm = () => {
     const newErrors = {
@@ -75,8 +84,13 @@ const EventCard: React.FC<any> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
+      // Clear any existing timeout
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      
       setShowSuccess(true);
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setIsOpen(false);
         setShowSuccess(false);
         setFormData({
@@ -86,6 +100,7 @@ const EventCard: React.FC<any> = ({
           phone: "",
           profession: "",
         });
+        timeoutRef.current = null;
       }, 2000);
     }
   };

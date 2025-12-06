@@ -27,6 +27,7 @@ const Counter = ({ target, duration = 2000, suffix = "" }: { target: number; dur
   const [count, setCount] = useState(0)
   const counterRef = useRef<HTMLSpanElement>(null)
   const isInView = useInView(counterRef, { once: true })
+  const animationFrameRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (isInView) {
@@ -38,11 +39,20 @@ const Counter = ({ target, duration = 2000, suffix = "" }: { target: number; dur
         setCount(Math.floor(percentage * target))
 
         if (percentage < 1) {
-          requestAnimationFrame(animateCount)
+          animationFrameRef.current = requestAnimationFrame(animateCount)
+        } else {
+          animationFrameRef.current = null
         }
       }
 
-      requestAnimationFrame(animateCount)
+      animationFrameRef.current = requestAnimationFrame(animateCount)
+    }
+
+    return () => {
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current)
+        animationFrameRef.current = null
+      }
     }
   }, [isInView, target, duration])
 
@@ -589,4 +599,5 @@ export default function PrevoyanceSocialePage() {
     </div>
   )
 }
+
 
