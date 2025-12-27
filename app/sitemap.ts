@@ -51,14 +51,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const articles = await getAllArticlesSlugs();
-
-  const articleRoutes = articles.map((article: any) => ({
-    url: `${baseUrl}/actualites/${article.slug}`,
-    lastModified: article.date,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
+  let articleRoutes: MetadataRoute.Sitemap = [];
+  
+  try {
+    const articles = await getAllArticlesSlugs();
+    articleRoutes = articles.map((article: any) => ({
+      url: `${baseUrl}/actualites/${article.slug}`,
+      lastModified: article.date,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+  } catch (error) {
+    // Si WORDPRESS_API n'est pas défini ou si l'API WordPress n'est pas accessible,
+    // on continue avec seulement les routes statiques
+    console.warn("Impossible de récupérer les articles WordPress pour le sitemap:", error);
+  }
 
   return [...staticRoutes, ...articleRoutes];
 }

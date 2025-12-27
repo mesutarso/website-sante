@@ -12,19 +12,24 @@ export const getEpidemiesOptions = async () => {
 };
 
 export const getEpidemies = async () => {
-  const { data: epidemies } = await getCollection("epidemies", {
-    fields: ["documentId", "nom", "description", "codeOMS"],
-    sort: ["nom:asc"],
-    populate: {
-      rapport_hebomandaires: {
-        fields: ["documentId", "semaine"],
+  try {
+    const { data: epidemies } = await getCollection("epidemies", {
+      fields: ["documentId", "nom", "description", "codeOMS"],
+      sort: ["nom:asc"],
+      populate: {
+        rapport_hebomandaires: {
+          fields: ["documentId", "semaine"],
+        },
       },
-    },
-  });
-  return epidemies?.map((epidemie: any) => ({
-    ...epidemie,
-    rapport_hebomandaires: epidemie.rapport_hebomandaires.length,
-  }));
+    });
+    return epidemies?.map((epidemie: any) => ({
+      ...epidemie,
+      rapport_hebomandaires: epidemie.rapport_hebomandaires?.length || 0,
+    })) || [];
+  } catch (error) {
+    console.warn("Impossible de récupérer les épidémies depuis Strapi:", error);
+    return [];
+  }
 };
 
 export const getEpidemieByDocumentId = async (documentId: string) => {

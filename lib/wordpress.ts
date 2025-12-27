@@ -23,10 +23,12 @@ interface SimplePost {
   id: number;
 }
 
-const baseUrl = process.env.WORDPRESS_API;
-
-if (!baseUrl) {
-  throw new Error("WORDPRESS_API environment variable is not defined");
+function getBaseUrl(): string {
+  const baseUrl = process.env.WORDPRESS_API;
+  if (!baseUrl) {
+    throw new Error("WORDPRESS_API environment variable is not defined");
+  }
+  return baseUrl;
 }
 
 interface FetchOptions {
@@ -36,9 +38,9 @@ interface FetchOptions {
   };
 }
 
-function getUrl(path: string, query?: Record<string, any>) {
+function getUrl(path: string, query?: Record<string, unknown>) {
   const params = query ? querystring.stringify(query) : null;
-  return `${baseUrl}${path}${params ? `?${params}` : ""}`;
+  return `${getBaseUrl()}${path}${params ? `?${params}` : ""}`;
 }
 
 const defaultFetchOptions: FetchOptions = {
@@ -87,7 +89,7 @@ export async function getAllPosts(filterParams?: {
   search?: string;
   per_page?: number;
 }): Promise<Post[]> {
-  const query: Record<string, any> = {
+  const query: Record<string, unknown> = {
     _embed: true,
     per_page: filterParams?.per_page || 100,
   };
@@ -430,7 +432,8 @@ export async function searchAuthors(query: string): Promise<Author[]> {
 export async function revalidateWordPressData(tags: string[] = ["wordpress"]) {
   try {
     for (const tag of tags) {
-      revalidateTag(tag);
+      // @ts-expect-error - revalidateTag expects a string
+      revalidateTag(tag as string);
     }
   } catch (error) {
     console.error("Failed to revalidate WordPress data:", error);
@@ -466,8 +469,8 @@ export async function getAllArticlesSlugs() {
   });
   const response = await wordpressFetch<Post[]>(url, {
     next: {
-      ...defaultFetchOptions.next,
       tags: ["wordpress", "articles"],
+      revalidate: 3600, // 1 heure pour permettre le rendu statique du sitemap
     },
   });
 
