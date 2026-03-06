@@ -68,9 +68,13 @@ export const MENU = [
     ],
   },
   {
-    name: "Contact",
-    href: "/contact",
+    name: "Accord",
+    href: "/accord",
   },
+  // {
+  //   name: "Contact",
+  //   href: "/contact",
+  // },
   {
     name: "Épidemiologie",
     href: "/epidemie",
