@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, TrendingUp, Activity, Shield, BarChart3, Users, Calendar, Phone } from "lucide-react";
 import Link from "next/link";
+import { CategoryDocumentsTable } from "@/components/documents/category-documents-table";
+import { getDocumentsByCategoryName } from "@/wordpress/collections/documents";
 
 // Interface pour les données d'épidémie
 interface Epidemie {
@@ -58,7 +60,10 @@ const getEpidemieImage = (nom: string): string => {
 };
 
 async function EpidemiePage() {
-    const epidemies = await getEpidemies() as Epidemie[];
+    const [epidemies, sitRepCategory] = await Promise.all([
+        getEpidemies() as Promise<Epidemie[]>,
+        getDocumentsByCategoryName("SitRep"),
+    ]);
 
     return (
         <div>
@@ -204,6 +209,19 @@ async function EpidemiePage() {
                 </div>
 
             </Container>
+
+            <section className="bg-gray-50 py-8 md:py-12">
+                <Container>
+                    <h2 className="mb-8 text-3xl font-semibold text-gray-800 md:text-4xl">
+                        Rapport de Situation de la 17ème Épidémie de la Maladie à Virus EBOLA /RDC
+                    </h2>
+                    <CategoryDocumentsTable
+                        documents={sitRepCategory.documents}
+                        categoryName={sitRepCategory.name || "SitRep"}
+                        documentCount={sitRepCategory.count}
+                    />
+                </Container>
+            </section>
 
             <div className="mt-8 bg-brown">
                 <Container>

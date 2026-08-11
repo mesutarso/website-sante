@@ -59,3 +59,33 @@ export const GET_DOCUMENTS_BY_CATEGORY = `query getDocumentsByCategory($id: ID =
     }
   }
 `;
+
+export const GET_DOCUMENTS_BY_CATEGORY_NAME = `query getDocumentsByCategoryName($name: ID = "") {
+  categorieDocument(id: $name, idType: NAME) {
+    count
+    name
+    slug
+    documents(first: 100) {
+      nodes {
+        id
+        title(format: RENDERED)
+        documentsFields {
+          fichier {
+            node {
+              mediaItemUrl
+              fileSize
+            }
+          }
+          lien
+          type
+        }
+        categorieDocuments {
+          nodes {
+            name
+            slug
+          }
+        }
+      }
+    }
+  }
+}`;
